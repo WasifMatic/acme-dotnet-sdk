@@ -22,11 +22,11 @@ The PayPal Server SDK provides integration access to the PayPal REST APIs. The A
 If you are building with .NET CLI tools then you can also use the following command:
 
 ```bash
-dotnet add package cliV1 --version 10.0.0
+dotnet add package cliV1 --version 10.1.0
 ```
 
 You can also view the package at:
-https://www.nuget.org/packages/cliV1/10.0.0
+https://www.nuget.org/packages/cliV1/10.1.0
 
 ## Initialize the API Client
 
