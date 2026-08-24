@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Models;
+using PayPalServer.Core.Models;
 
-namespace PayPalServerSdk.Models;
+namespace PayPalServer.Models;
 
 /// <summary>
 /// Additional information necessary to evaluate the risk profile of a transaction.

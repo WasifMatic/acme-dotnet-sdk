@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Enum;
+using PayPalServer.Core.Enum;
 
-namespace PayPalServerSdk.Models.Enums;
+namespace PayPalServer.Models.Enums;
 
 /// <summary>
 /// Merchant preference on how the buyer can navigate back to merchant website post approving the transaction on the PayPal App.

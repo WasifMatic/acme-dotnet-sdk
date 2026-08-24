@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Enum;
+using PayPalServer.Core.Enum;
 
-namespace PayPalServerSdk.Models.Enums;
+namespace PayPalServer.Models.Enums;
 
 /// <summary>
 /// Indicates the type of payment data passed, in case of Non China the payment data is 3DSECURE and for China it is EMV.

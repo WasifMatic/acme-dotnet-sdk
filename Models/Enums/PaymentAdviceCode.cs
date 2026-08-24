@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Enum;
+using PayPalServer.Core.Enum;
 
-namespace PayPalServerSdk.Models.Enums;
+namespace PayPalServer.Models.Enums;
 
 /// <summary>
 /// The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes.

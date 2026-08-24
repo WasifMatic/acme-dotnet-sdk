@@ -1,8 +1,8 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Models;
-using PayPalServerSdk.Models.Enums;
+using PayPalServer.Core.Models;
+using PayPalServer.Models.Enums;
 
-namespace PayPalServerSdk.Models;
+namespace PayPalServer.Models;
 
 /// <summary>
 /// Payer confirms the intent to pay for the Order using the provided payment source.

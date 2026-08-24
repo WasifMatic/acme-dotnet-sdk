@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Models;
-using PayPalServerSdk.Models.Enums;
+using PayPalServer.Core.Models;
+using PayPalServer.Models.Enums;
 
-namespace PayPalServerSdk.Models;
+namespace PayPalServer.Models;
 
 /// <summary>
 /// The authorization with additional payment details, such as risk assessment and processor response. These details are populated only for certain payment methods.

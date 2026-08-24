@@ -1,6 +1,6 @@
-using PayPalServerSdk.Servers;
+using PayPalServer.Servers;
 
-namespace PayPalServerSdk;
+namespace PayPalServer;
 
 public class ServerOptions
 {

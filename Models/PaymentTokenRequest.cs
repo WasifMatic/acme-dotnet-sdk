@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Models;
+using PayPalServer.Core.Models;
 
-namespace PayPalServerSdk.Models;
+namespace PayPalServer.Models;
 
 /// <summary>
 /// Payment Token Request where the <c>source</c> defines the type of instrument to be stored.

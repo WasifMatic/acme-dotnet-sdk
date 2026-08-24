@@ -1,10 +1,10 @@
 using System.Net.Http;
-using PayPalServerSdk.Api;
-using PayPalServerSdk.Core;
-using PayPalServerSdk.Core.Logging;
-using PayPalServerSdk.Core.Models;
+using PayPalServer.Api;
+using PayPalServer.Core;
+using PayPalServer.Core.Logging;
+using PayPalServer.Core.Models;
 
-namespace PayPalServerSdk;
+namespace PayPalServer;
 
 /// <summary>
 /// ### Important Notes
@@ -18,9 +18,9 @@ namespace PayPalServerSdk;
 ///  - Transaction Search Controller: <see href="https://developer.paypal.com/docs/api/transaction-search/v1/">Transaction Search API v1</see>
 ///  - Subscriptions Controller: <see href="https://developer.paypal.com/docs/api/subscriptions/v1/">Subscriptions API v1</see>
 /// </summary>
-public sealed class PayPalServerSdkClient
+public sealed class PayPalServerClient
 {
-    public PayPalServerSdkClient(HttpClient httpClient, PayPalServerSdkClientOptions options)
+    public PayPalServerClient(HttpClient httpClient, PayPalServerClientOptions options)
     {
         var server = new Server(options.Environment, options.Server);
         var queryParameterFactory = new QueryParameterFactory([]);
@@ -28,14 +28,14 @@ public sealed class PayPalServerSdkClient
         var urlFactory = new UriFactory(queryParameterFactory, templateParamsFactory);
         var httpStatusPolicy = new HttpStatusPolicy([]);
         var headersFactory =
-            new HeadersFactory([new HeaderParam("User-Agent", "PayPalServerSdkClient/2.29 CSharp"),
+            new HeadersFactory([new HeaderParam("User-Agent", "PayPalServerClient/2.29 CSharp"),
                     new HeaderParam("X-APIMatic-Lang", "CSharp"),
                     new HeaderParam("X-APIMatic-Package-Version", "2.29"),
                     new HeaderParam("X-APIMatic-Gen-Version", "4.0.0"),
                     new HeaderParam("X-APIMatic-OS", RuntimeEnvironment.Os),
                     new HeaderParam("X-APIMatic-Runtime", RuntimeEnvironment.Runtime)]);
         var resiliencePipelineFactory = new ResiliencePipelineFactory(options.Retry);
-        var httpLogger = new HttpLogger(options.Logging, "PayPalServerSdkClient");
+        var httpLogger = new HttpLogger(options.Logging, "PayPalServerClient");
         var rawClient =
             new RawClient(httpClient,
                 urlFactory,

@@ -1,3 +1,3 @@
-namespace PayPalServerSdk.Core.Models;
+namespace PayPalServer.Core.Models;
 
 public readonly record struct HeaderParam(string Key, object? Value);

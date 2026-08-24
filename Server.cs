@@ -1,7 +1,7 @@
-using PayPalServerSdk.Core.Models;
-using PayPalServerSdk.Servers;
+using PayPalServer.Core.Models;
+using PayPalServer.Servers;
 
-namespace PayPalServerSdk;
+namespace PayPalServer;
 
 public class Server
 {

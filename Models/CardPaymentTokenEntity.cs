@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Models;
-using PayPalServerSdk.Models.Enums;
+using PayPalServer.Core.Models;
+using PayPalServer.Models.Enums;
 
-namespace PayPalServerSdk.Models;
+namespace PayPalServer.Models;
 
 /// <summary>
 /// Full representation of a Card Payment Token.

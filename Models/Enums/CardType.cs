@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Enum;
+using PayPalServer.Core.Enum;
 
-namespace PayPalServerSdk.Models.Enums;
+namespace PayPalServer.Models.Enums;
 
 /// <summary>
 /// Type of card. i.e Credit, Debit and so on.

@@ -1,9 +1,9 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Models;
-using PayPalServerSdk.Core.Validation.Attributes;
-using PayPalServerSdk.Models.Enums;
+using PayPalServer.Core.Models;
+using PayPalServer.Core.Validation.Attributes;
+using PayPalServer.Models.Enums;
 
-namespace PayPalServerSdk.Models;
+namespace PayPalServer.Models;
 
 /// <summary>
 /// The regular and trial execution details for a billing cycle.

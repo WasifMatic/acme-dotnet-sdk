@@ -1,7 +1,7 @@
-using PayPalServerSdk.Core.ErrorResponse;
-using PayPalServerSdk.Core.Response;
+using PayPalServer.Core.ErrorResponse;
+using PayPalServer.Core.Response;
 
-namespace PayPalServerSdk.Core.Models;
+namespace PayPalServer.Core.Models;
 
 internal sealed class ApiResponse<TResponse, TError>
 {

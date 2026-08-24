@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Enum;
+using PayPalServer.Core.Enum;
 
-namespace PayPalServerSdk.Models.Enums;
+namespace PayPalServer.Models.Enums;
 
 /// <summary>
 /// The location from which the shipping address is derived., The shipping preference. This only applies to PayPal payment source., The shipping preference. This only applies to PayPal payment source., The location from which the shipping address is derived.

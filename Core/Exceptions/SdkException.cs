@@ -1,6 +1,6 @@
 using System;
 
-namespace PayPalServerSdk.Core.Exceptions;
+namespace PayPalServer.Core.Exceptions;
 
 public sealed class SdkException<TError> : Exception
 {

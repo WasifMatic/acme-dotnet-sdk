@@ -2,15 +2,15 @@ using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using PayPalServerSdk.Core;
-using PayPalServerSdk.Core.Exceptions;
-using PayPalServerSdk.Core.Models;
-using PayPalServerSdk.Core.Request;
-using PayPalServerSdk.Core.Response;
-using PayPalServerSdk.Errors;
-using PayPalServerSdk.Models;
+using PayPalServer.Core;
+using PayPalServer.Core.Exceptions;
+using PayPalServer.Core.Models;
+using PayPalServer.Core.Request;
+using PayPalServer.Core.Response;
+using PayPalServer.Errors;
+using PayPalServer.Models;
 
-namespace PayPalServerSdk.Api;
+namespace PayPalServer.Api;
 
 /// <summary>
 /// Use the <c>/payments</c> resource to authorize, capture, void authorizations, and retrieve captures.

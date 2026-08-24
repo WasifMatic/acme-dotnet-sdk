@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using PayPalServerSdk.Core.Authentication.OAuth2;
-using PayPalServerSdk.Core.Authentication.OAuth2.ClientCredentials;
-using PayPalServerSdk.Core.Configuration;
-using PayPalServerSdk.Core.Hooks;
-using PayPalServerSdk.Servers;
+using PayPalServer.Core.Authentication.OAuth2;
+using PayPalServer.Core.Authentication.OAuth2.ClientCredentials;
+using PayPalServer.Core.Configuration;
+using PayPalServer.Core.Hooks;
+using PayPalServer.Servers;
 
-namespace PayPalServerSdk;
+namespace PayPalServer;
 
-public class PayPalServerSdkClientOptions
+public class PayPalServerClientOptions
 {
     public ServerEnvironment Environment { get; set; } = ServerEnvironment.Default();
     public RetryOptions Retry { get; set; } = RetryOptions.Default();

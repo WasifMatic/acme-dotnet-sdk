@@ -1,8 +1,8 @@
 using System;
 using Microsoft.Extensions.Logging;
-using PayPalServerSdk.Core.Configuration;
+using PayPalServer.Core.Configuration;
 
-namespace PayPalServerSdk.Core.Logging;
+namespace PayPalServer.Core.Logging;
 
 internal static class LoggingEnvironment
 {

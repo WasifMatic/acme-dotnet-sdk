@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Enum;
+using PayPalServer.Core.Enum;
 
-namespace PayPalServerSdk.Models.Enums;
+namespace PayPalServer.Models.Enums;
 
 /// <summary>
 /// The tenure type of the billing cycle identifies if the billing cycle is a trial(free or discounted) or regular billing cycle., The tenure type of the billing cycle. In case of a plan having trial cycle, only 2 trial cycles are allowed per plan., The type of the billing cycle.

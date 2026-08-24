@@ -1,7 +1,7 @@
 using System.Net.Http;
-using PayPalServerSdk.Core.Extensions;
+using PayPalServer.Core.Extensions;
 
-namespace PayPalServerSdk.Core.Request;
+namespace PayPalServer.Core.Request;
 
 internal sealed class EmptyBody : IRequest
 {

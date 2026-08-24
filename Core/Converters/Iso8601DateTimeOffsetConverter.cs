@@ -1,9 +1,9 @@
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using PayPalServerSdk.Core.Extensions;
+using PayPalServer.Core.Extensions;
 
-namespace PayPalServerSdk.Core.Converters;
+namespace PayPalServer.Core.Converters;
 
 internal sealed class Iso8601DateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 {

@@ -3,15 +3,15 @@ using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace PayPalServerSdk;
+namespace PayPalServer;
 
 public static class ServiceCollectionExtensions
 {
     extension(IServiceCollection services)
     {
-        public IServiceCollection AddPayPalServerSdkClient(Action<PayPalServerSdkClientOptions>? configure = null)
+        public IServiceCollection AddPayPalServerClient(Action<PayPalServerClientOptions>? configure = null)
         {
-            var options = new PayPalServerSdkClientOptions();
+            var options = new PayPalServerClientOptions();
             configure?.Invoke(options);
             services.AddHttpClient();
             services.AddSingleton(sp =>
@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
                         };
                     var httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
                     var httpClient = httpClientFactory.CreateClient();
-                    return new PayPalServerSdkClient(httpClient, options);
+                    return new PayPalServerClient(httpClient, options);
                 });
             return services;
         }

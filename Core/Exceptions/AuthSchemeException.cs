@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace PayPalServerSdk.Core.Exceptions;
+namespace PayPalServer.Core.Exceptions;
 
 public sealed class AuthSchemeException : Exception
 {

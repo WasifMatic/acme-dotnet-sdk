@@ -1,8 +1,8 @@
-# PayPal Server SDK
+# PayPal Server
 
 [![Built with APIMatic][apimatic-badge]][apimatic-url] [![License: MIT][license-badge]][license-url]
 
-The PayPal Server SDK SDK for .NET provides access to the PayPal Server SDK REST APIs from .NET applications.
+The PayPal Server SDK for .NET provides access to the PayPal Server REST APIs from .NET applications.
 
 > [!TIP]
 > **Looking for a specific signature, model, enum, or error type?** This SDK ships a generated,
@@ -37,10 +37,10 @@ dotnet add package cliV1
 
 ### Dependency Injection
 
-Register the client with `IServiceCollection` and resolve it from the container. The `HttpClient` is managed by `IHttpClientFactory`. Configure the client's behavior through [PayPalServerSdkClientOptions](PayPalServerSdkClientOptions.cs).
+Register the client with `IServiceCollection` and resolve it from the container. The `HttpClient` is managed by `IHttpClientFactory`. Configure the client's behavior through [PayPalServerClientOptions](PayPalServerClientOptions.cs).
 
 ```csharp
-services.AddPayPalServerSdkClient(options =>
+services.AddPayPalServerClient(options =>
     {
         options.Oauth2 =
             new OAuth2ClientCredentials
@@ -55,13 +55,13 @@ services.AddPayPalServerSdkClient(options =>
 
 ### Direct Instantiation
 
-Create the client by passing an `HttpClient` you manage yourself. Configure the client's behavior through [PayPalServerSdkClientOptions](PayPalServerSdkClientOptions.cs).
+Create the client by passing an `HttpClient` you manage yourself. Configure the client's behavior through [PayPalServerClientOptions](PayPalServerClientOptions.cs).
 
 ```csharp
 var httpClient = new HttpClient();
 // TODO: configure more client options here
 var options =
-    new PayPalServerSdkClientOptions
+    new PayPalServerClientOptions
     {
         Oauth2 = new OAuth2ClientCredentials
         {
@@ -70,7 +70,7 @@ var options =
         },
         Environment = ServerEnvironment.Sandbox,
     };
-var client = new PayPalServerSdkClient(httpClient, options);
+var client = new PayPalServerClient(httpClient, options);
 ```
 
 ---
@@ -108,7 +108,7 @@ The map and the [API Reference](api-reference.md) answer different questions, an
 ## Best Practices
 
 > [!TIP]
-> Use a **single `PayPalServerSdkClient` instance** for the lifetime of your application and
+> Use a **single `PayPalServerClient` instance** for the lifetime of your application and
 > reuse it across all requests. Creating a new instance per request might exhaust the
 > connection pool.
 

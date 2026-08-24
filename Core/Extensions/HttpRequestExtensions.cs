@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using PayPalServerSdk.Core.Models;
+using PayPalServer.Core.Models;
 
-namespace PayPalServerSdk.Core.Extensions;
+namespace PayPalServer.Core.Extensions;
 
 internal static class HttpRequestExtensions
 {

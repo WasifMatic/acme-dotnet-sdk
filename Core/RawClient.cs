@@ -6,18 +6,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using Polly;
 using Polly.Timeout;
-using PayPalServerSdk.Core.Authentication;
-using PayPalServerSdk.Core.ErrorResponse;
-using PayPalServerSdk.Core.Extensions;
-using PayPalServerSdk.Core.Hooks;
-using PayPalServerSdk.Core.Logging;
-using PayPalServerSdk.Core.Models;
-using PayPalServerSdk.Core.Pagination;
-using PayPalServerSdk.Core.Pagination.States;
-using PayPalServerSdk.Core.Request;
-using PayPalServerSdk.Core.Response;
+using PayPalServer.Core.Authentication;
+using PayPalServer.Core.ErrorResponse;
+using PayPalServer.Core.Extensions;
+using PayPalServer.Core.Hooks;
+using PayPalServer.Core.Logging;
+using PayPalServer.Core.Models;
+using PayPalServer.Core.Pagination;
+using PayPalServer.Core.Pagination.States;
+using PayPalServer.Core.Request;
+using PayPalServer.Core.Response;
 
-namespace PayPalServerSdk.Core;
+namespace PayPalServer.Core;
 
 internal sealed class RawClient
 {

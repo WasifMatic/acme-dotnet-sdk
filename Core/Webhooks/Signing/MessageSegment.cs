@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PayPalServerSdk.Core.Webhooks.Signing;
+namespace PayPalServer.Core.Webhooks.Signing;
 
 internal abstract record MessageSegment
 {

@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace PayPalServerSdk.Core;
+namespace PayPalServer.Core;
 
 internal static class RuntimeEnvironment
 {

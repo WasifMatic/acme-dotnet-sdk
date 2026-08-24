@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PayPalServerSdk.Core;
+namespace PayPalServer.Core;
 
 internal sealed class AsyncLock
 {

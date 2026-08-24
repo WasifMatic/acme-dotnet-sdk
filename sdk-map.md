@@ -1,20 +1,20 @@
 <!-- Generated file — do not edit; regenerated with the SDK. -->
 
-# SDK map — PayPal Server SDK (.NET)
+# SDK map — PayPal Server (.NET)
 
 > A generated table of contents for this SDK. Consult this map and its sub-pages to learn signatures, error types, and server/auth wiring **by lookup**. Model shapes and enum values are *not* duplicated here — the map names the file declaring each type; read the shape there. The compiler is the backstop: a wrong name fails to build.
 
 |  |  |
 | --- | --- |
-| SDK display name | PayPal Server SDK |
-| Root namespace | `PayPalServerSdk` |
+| SDK display name | PayPal Server |
+| Root namespace | `PayPalServer` |
 | Target framework | `netstandard2.0` (C# `LangVersion 14`, `Nullable enable`) |
 | API spec version | `2.29` |
 | Generator | APIMatic |
 
 Staleness check: the API spec version above changes when the SDK is regenerated from a new spec. If a lookup here fails to compile, trust the compiler and re-read the source file named in the row.
 
-All `Source` paths on this map and its sub-pages are relative to the **SDK root** — the directory holding this file and `PayPalServerSdk.csproj` — never to the page that carries them. Open them as-is from the SDK root, from any page; if the SDK sits under a subdirectory of a larger repo, prefix that subdirectory.
+All `Source` paths on this map and its sub-pages are relative to the **SDK root** — the directory holding this file and `PayPalServer.csproj` — never to the page that carries them. Open them as-is from the SDK root, from any page; if the SDK sits under a subdirectory of a larger repo, prefix that subdirectory.
 
 ---
 
@@ -24,7 +24,7 @@ All `Source` paths on this map and its sub-pages are relative to the **SDK root*
 var httpClient = new HttpClient();
 // TODO: configure more client options here
 var options =
-    new PayPalServerSdkClientOptions
+    new PayPalServerClientOptions
     {
         Oauth2 = new OAuth2ClientCredentials
         {
@@ -33,13 +33,13 @@ var options =
         },
         Environment = ServerEnvironment.Sandbox,
     };
-var client = new PayPalServerSdkClient(httpClient, options);
+var client = new PayPalServerClient(httpClient, options);
 ```
 
-DI alternative (`services.AddPayPalServerSdkClient`):
+DI alternative (`services.AddPayPalServerClient`):
 
 ```csharp
-services.AddPayPalServerSdkClient(options =>
+services.AddPayPalServerClient(options =>
     {
         options.Oauth2 =
             new OAuth2ClientCredentials
@@ -52,9 +52,9 @@ services.AddPayPalServerSdkClient(options =>
     });
 ```
 
-Every API group is a property on the client (e.g. `client.Orders`). Source: `PayPalServerSdkClient.cs`. The only constructor is `PayPalServerSdkClient(HttpClient httpClient, PayPalServerSdkClientOptions options)`.
+Every API group is a property on the client (e.g. `client.Orders`). Source: `PayPalServerClient.cs`. The only constructor is `PayPalServerClient(HttpClient httpClient, PayPalServerClientOptions options)`.
 
-All `PayPalServerSdkClientOptions` properties (source: `PayPalServerSdkClientOptions.cs`):
+All `PayPalServerClientOptions` properties (source: `PayPalServerClientOptions.cs`):
 
 | Property | Type |
 | --- | --- |
@@ -66,7 +66,7 @@ All `PayPalServerSdkClientOptions` properties (source: `PayPalServerSdkClientOpt
 | `Oauth2` | `OAuth2ClientCredentials?` |
 | `Oauth2TokenStrategy` | `IOAuth2TokenStrategy<OAuth2ClientCredentials>?` |
 
-`RetryOptions` members (namespace `PayPalServerSdk.Core.Configuration` — add `using PayPalServerSdk.Core.Configuration;`; source: `Core/Configuration/RetryOptions.cs`; all members are `required`, so build a full instance or start from `RetryOptions.Default()`):
+`RetryOptions` members (namespace `PayPalServer.Core.Configuration` — add `using PayPalServer.Core.Configuration;`; source: `Core/Configuration/RetryOptions.cs`; all members are `required`, so build a full instance or start from `RetryOptions.Default()`):
 
 | Member | Type |
 | --- | --- |
@@ -175,11 +175,11 @@ Namespaces by content type (add `using` accordingly):
 
 | Contents | Namespace |
 | --- | --- |
-| Client & options (root) | `PayPalServerSdk` |
-| Operation controllers (`Api/`) | `PayPalServerSdk.Api` |
-| Records (`Models/`) | `PayPalServerSdk.Models` |
-| Enums (`Models/Enums/`) | `PayPalServerSdk.Models.Enums` |
-| Error classes (`Errors/`) | `PayPalServerSdk.Errors` |
+| Client & options (root) | `PayPalServer` |
+| Operation controllers (`Api/`) | `PayPalServer.Api` |
+| Records (`Models/`) | `PayPalServer.Models` |
+| Enums (`Models/Enums/`) | `PayPalServer.Models.Enums` |
+| Error classes (`Errors/`) | `PayPalServer.Errors` |
 
 ---
 

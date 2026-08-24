@@ -5,12 +5,12 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using PayPalServerSdk.Core.ErrorResponse;
-using PayPalServerSdk.Core.Models;
-using PayPalServerSdk.Core.Request;
-using PayPalServerSdk.Core.Response;
+using PayPalServer.Core.ErrorResponse;
+using PayPalServer.Core.Models;
+using PayPalServer.Core.Request;
+using PayPalServer.Core.Response;
 
-namespace PayPalServerSdk.Core.Authentication.OAuth2.AuthorizationCode;
+namespace PayPalServer.Core.Authentication.OAuth2.AuthorizationCode;
 
 internal sealed class OAuth2AuthorizationCodeStrategy
     : IOAuth2RefreshableTokenStrategy<OAuth2AuthorizationCodeCredentials>
