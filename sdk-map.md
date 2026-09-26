@@ -1,20 +1,20 @@
 <!-- Generated file — do not edit; regenerated with the SDK. -->
 
-# SDK map — PayPal Server (.NET)
+# SDK map — Swagger Petstore - OpenAPI 3.0 (.NET)
 
 > A generated table of contents for this SDK. Consult this map and its sub-pages to learn signatures, error types, and server/auth wiring **by lookup**. Model shapes and enum values are *not* duplicated here — the map names the file declaring each type; read the shape there. The compiler is the backstop: a wrong name fails to build.
 
 |  |  |
 | --- | --- |
-| SDK display name | PayPal Server |
-| Root namespace | `PayPalServer` |
+| SDK display name | Swagger Petstore - OpenAPI 3.0 |
+| Root namespace | `SwaggerPetstoreOpenApi30` |
 | Target framework | `netstandard2.0` (C# `LangVersion 14`, `Nullable enable`) |
-| API spec version | `2.29` |
+| API spec version | `1.0.26` |
 | Generator | APIMatic |
 
 Staleness check: the API spec version above changes when the SDK is regenerated from a new spec. If a lookup here fails to compile, trust the compiler and re-read the source file named in the row.
 
-All `Source` paths on this map and its sub-pages are relative to the **SDK root** — the directory holding this file and `PayPalServer.csproj` — never to the page that carries them. Open them as-is from the SDK root, from any page; if the SDK sits under a subdirectory of a larger repo, prefix that subdirectory.
+All `Source` paths on this map and its sub-pages are relative to the **SDK root** — the directory holding this file and `SwaggerPetstoreOpenApi30.csproj` — never to the page that carries them. Open them as-is from the SDK root, from any page; if the SDK sits under a subdirectory of a larger repo, prefix that subdirectory.
 
 ---
 
@@ -24,49 +24,46 @@ All `Source` paths on this map and its sub-pages are relative to the **SDK root*
 var httpClient = new HttpClient();
 // TODO: configure more client options here
 var options =
-    new PayPalServerClientOptions
+    new SwaggerPetstoreOpenApi30ClientOptions
     {
-        Oauth2 = new OAuth2ClientCredentials
-        {
-            ClientId = "YOUR_CLIENT_ID",
-            ClientSecret = "YOUR_CLIENT_SECRET",
-        },
-        Environment = ServerEnvironment.Sandbox,
+        PetstoreAuth = "YOUR_API_KEY",
+        ApiKey = "YOUR_API_KEY",
+        Environment = ServerEnvironment.Production,
     };
-var client = new PayPalServerClient(httpClient, options);
+var client = new SwaggerPetstoreOpenApi30Client(httpClient, options);
 ```
 
-DI alternative (`services.AddPayPalServerClient`):
+DI alternative (`services.AddSwaggerPetstoreOpenApi30Client`):
 
 ```csharp
-services.AddPayPalServerClient(options =>
+services.AddSwaggerPetstoreOpenApi30Client(options =>
     {
-        options.Oauth2 =
-            new OAuth2ClientCredentials
-            {
-                ClientId = "YOUR_CLIENT_ID",
-                ClientSecret = "YOUR_CLIENT_SECRET",
-            };
-        options.Environment = ServerEnvironment.Sandbox;
+        options.PetstoreAuth = "YOUR_API_KEY";
+        options.ApiKey = "YOUR_API_KEY";
+        options.Environment = ServerEnvironment.Production;
         // TODO: configure more client options here
     });
 ```
 
-Every API group is a property on the client (e.g. `client.Orders`). Source: `PayPalServerClient.cs`. The only constructor is `PayPalServerClient(HttpClient httpClient, PayPalServerClientOptions options)`.
+Every API group is a property on the client (e.g. `client.PetApi`). Source: `SwaggerPetstoreOpenApi30Client.cs`. The only constructor is `SwaggerPetstoreOpenApi30Client(HttpClient httpClient, SwaggerPetstoreOpenApi30ClientOptions options)`.
 
-All `PayPalServerClientOptions` properties (source: `PayPalServerClientOptions.cs`):
+All `SwaggerPetstoreOpenApi30ClientOptions` properties (source: `SwaggerPetstoreOpenApi30ClientOptions.cs`):
 
 | Property | Type |
 | --- | --- |
 | `Environment` | `ServerEnvironment` |
 | `Retry` | `RetryOptions` |
 | `Logging` | `LoggingOptions` |
+| `TimeProvider` | `TimeProvider` |
 | `Server` | `ServerOptions` |
+| `StreamReadTimeout` | `TimeSpan?` |
 | `Hooks` | `IReadOnlyList<SdkHook>` |
-| `Oauth2` | `OAuth2ClientCredentials?` |
-| `Oauth2TokenStrategy` | `IOAuth2TokenStrategy<OAuth2ClientCredentials>?` |
+| `PetstoreAuth` | `string?` |
+| `ApiKey` | `string?` |
 
-`RetryOptions` members (namespace `PayPalServer.Core.Configuration` — add `using PayPalServer.Core.Configuration;`; source: `Core/Configuration/RetryOptions.cs`; all members are `required`, so build a full instance or start from `RetryOptions.Default()`):
+`ServerEnvironment` (source: `Servers/ServerEnvironment.cs`, namespace `SwaggerPetstoreOpenApi30.Servers`)
+
+`RetryOptions` members (namespace `SwaggerPetstoreOpenApi30.Core.Configuration` — add `using SwaggerPetstoreOpenApi30.Core.Configuration;`; source: `Core/Configuration/RetryOptions.cs`; all members are `required`, so build a full instance or start from `RetryOptions.Default()`):
 
 | Member | Type |
 | --- | --- |
@@ -84,16 +81,20 @@ All `PayPalServerClientOptions` properties (source: `PayPalServerClientOptions.c
 
 ## Error-handling model (read once — applies to every operation)
 
-Operations are **throw-based**. On an error status the SDK throws `SdkException<TError>` (`Core/Exceptions/SdkException.cs`) exposing `.Error` of type `TError`. There are two cases:
+Operations are **throw-based**. On an error status the SDK throws `ApiException<TError>` (`Core/Exceptions/ApiException.cs`, namespace `SwaggerPetstoreOpenApi30.Core.Exceptions`) exposing `.Error` of type `TError` beside the `StatusCode`, `Headers` and `ContentType` of the response. There are two cases:
 
-- **Case A — typed error.** `TError` is a generated `…Error : ApiError` class with status-specific `TryGet…(out …)` accessors (each returns `true` when that shape is present) plus the inherited `TryGetRawError(out RawError)` fallback. The operation blocks name the exact `TryGet…` methods and the HTTP status each maps to.
-- **Case B — raw error.** `TError` is `RawError` (`Core/ErrorResponse/RawError.cs`): `StatusCode: HttpStatusCode` · `ReadAsBytes(): ReadOnlyMemory<byte>` · `ReadAsString(): string` · `ReadAsJson<T>(): T?`.
+- **Case A — typed error.** `TError` is a generated `…Error : ApiError` class (namespace `SwaggerPetstoreOpenApi30.Errors`) with status-specific `TryGet…(out …)` accessors (each returns `true` when that shape is present) plus the inherited `TryGetRawError(out RawError)` fallback. The operation blocks name the exact `TryGet…` methods and the HTTP status each maps to.
+- **Case B — raw error.** `TError` is `RawError` (`Core/ErrorResponse/RawError.cs`, namespace `SwaggerPetstoreOpenApi30.Core.ErrorResponse`): `StatusCode: HttpStatusCode` · `ReadAsBytes(): ReadOnlyMemory<byte>` · `ReadAsString(): string` · `ReadAsJson<T>(): T?`.
+
+⚠ Each of the three lives in its own namespace. `Core/` holds several namespaces, so a catch block naming `ApiException<T>`, a typed `{Operation}Error` and `RawError` together needs a `using` for each.
+
+`ApiException<TError>` is one leaf of the `SdkException` family (`Core/Exceptions/SdkException.cs`): a request that produced no usable response surfaces as `SdkConnectionException` or `SdkTimeoutException`, a body that does not match its declared type as `ResponseDeserializationException`, and a credential that could not be applied as `AuthSchemeException`. Every one of them names the failed call. The full table is in [README → Error Handling](README.md#error-handling).
 
 Core error types (`Core/ErrorResponse/`) — public members with their **declared types**, verbatim from source:
 
 | Type | Public members | Source |
 | --- | --- | --- |
-| `ApiError` — abstract base of the 39 typed error classes in `Errors/` | `TryGetRawError(out RawError error): bool` | `Core/ErrorResponse/ApiError.cs` |
+| `ApiError` — abstract base of the 15 typed error classes in `Errors/` | `TryGetRawError(out RawError error): bool` | `Core/ErrorResponse/ApiError.cs` |
 | `RawError` | `StatusCode: HttpStatusCode` · `ReadAsBytes(): ReadOnlyMemory<byte>` · `ReadAsString(): string` · `ReadAsJson<T>(): T?` | `Core/ErrorResponse/RawError.cs` |
 
 Typed-error payload shapes (the `out` types in each operation page's error-accessor cells) are ordinary records/unions — no special handling. The operation's **Type sources** table gives the file that declares each one; read field names, declared types, and JSON wire names there, as for any other model.
@@ -101,39 +102,39 @@ Typed-error payload shapes (the `out` types in each operation page's error-acces
 ```csharp
 try
 {
-    var response = await client.Orders.AuthorizeOrder(id,
-        payPalMockResponse,
-        payPalRequestId,
-        payPalClientMetadataId,
-        payPalAuthAssertion,
-        body);
+    var response = await client.PetApi.AddPet(new AddPetRequest
+        {
+            Name = "doggie",
+            PhotoUrls = ["some example string"],
+            Id = 10L,
+        });
 }
-catch (SdkException<AuthorizeOrderError> ex)
+catch (ApiException<AddPetError> ex)
 {
     // Case A — typed error
-    if (ex.Error.TryGetError(out var error))
+    if (ex.Error.TryGetNoContent(out var error))
     {
-        // Handle 400, 401, 403, 404, 422, 500
+        // Handle 400, 422
     }
     else if (ex.Error.TryGetRawError(out var raw))
     {
         // Any other error status
     }
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // Case B — raw error
     // ex.Error.StatusCode, ex.Error.ReadAsString(), ex.Error.ReadAsJson<T>()
 }
 ```
 
-**No-throw (`…Result`) variants: absent across this SDK** — every operation is throw-only. Of **40 operations**, **39 are Case A (typed)** and **1 is Case B (raw)**.
+**No-throw (`…Result`) variants: absent across this SDK** — every operation is throw-only. Of **19 operations**, **15 are Case A (typed)** and **4 are Case B (raw)**.
 
 ---
 
-## Operations — by controller (5 groups, 40 operations)
+## Operations — by controller (3 groups, 19 operations)
 
-Each links to a sub-page with one row per operation: signature with must-pass-explicitly params and defaults, query-param wire names, return type, error Case A/B, and Case A's typed accessors with their statuses. Each operation also carries a **Type sources** table — every type it names, with the file that declares it — so resolving a body, return, or error payload to its source is a lookup, never a search. `RawError` is excluded there (its members and path are above); an operation with no table names nothing but primitives and `RawError`.
+Each links to a sub-page with one row per operation: signature, the request record's required members, query-param wire names, return type, error Case A/B, and Case A's typed accessors with their statuses. Each operation also carries a **Type sources** table — every type it names, with the file that declares it — so resolving a body, return, or error payload to its source is a lookup, never a search. `RawError` is excluded there (its members and path are above); an operation with no table names nothing but primitives and `RawError`.
 
 **Each row states what is specific to its operation. Everything below holds for EVERY operation unless that operation's row says otherwise, so a row silent on one of these points is telling you the default here applies — take it and move on rather than opening the source to confirm it.**
 
@@ -143,7 +144,7 @@ Each links to a sub-page with one row per operation: signature with must-pass-ex
 | **No pagination** — the operation returns a single response, not a `Pageable` | here | pagination is offered — the block carries a **Pagination** bullet naming the posture (page-, offset-, cursor- or link-based, or the `page`-without-page-size case) |
 | **Case B error accessors are always these four** — `StatusCode: HttpStatusCode` · `ReadAsBytes(): ReadOnlyMemory<byte>` · `ReadAsString(): string` · `ReadAsJson<T>(): T?` | the `RawError` row above | never — a `Case B` label always implies exactly these four; Case A rows list their own typed accessors |
 | **Server group `Default`** — base URL per Servers & auth below | here | the operation is on another group — its block carries a **Server group** bullet |
-| **Parameter names are literal** — signatures are generated code verbatim; in named arguments use the exact parameter names shown (the cancellation-token parameter is named `ct`) | here | never — it always holds |
+| **Inputs are one request record** — an operation that takes input takes a single request record as its first parameter; build it with an object initializer, using the property names in the record's source (its file is in the operation's **Type sources**). A member the row does not list as required is optional or already carries the spec's default | here | never — it always holds |
 
 **The HTTP verb and route live on the operation itself**, in the source file named at the top of its operations page. This map is method-first: the C# method is the interface you call. When something wire-level needs the route — reproducing a raw request, pointing the client at a mock, reading a provider-side log — read it from that file; do not reconstruct it from memory or infer it from the method name.
 
@@ -151,53 +152,63 @@ Each links to a sub-page with one row per operation: signature with must-pass-ex
 
 | Controller (`client.X`) | Ops | Page |
 | --- | --- | --- |
-| `Orders` | 8 | [map/operations/Orders.md](map/operations/Orders.md) |
-| `Payments` | 7 | [map/operations/Payments.md](map/operations/Payments.md) |
-| `Subscriptions` | 17 | [map/operations/Subscriptions.md](map/operations/Subscriptions.md) |
-| `TransactionSearch` | 2 | [map/operations/TransactionSearch.md](map/operations/TransactionSearch.md) |
-| `Vault` | 6 | [map/operations/Vault.md](map/operations/Vault.md) |
+| `PetApi` | 8 | [map/operations/PetApi.md](map/operations/PetApi.md) |
+| `Store` | 4 | [map/operations/Store.md](map/operations/Store.md) |
+| `UserApi` | 7 | [map/operations/UserApi.md](map/operations/UserApi.md) |
 
 ---
 
 ## Models — where they live, how to build them
 
-**Shapes live only in the source.** Every file under `Models/` and `Errors/` declares exactly one public type, named after the file, and no two share a name — so a type name *is* its path. Take it from the operation's **Type sources** table, or build it from the kind's directory below. Never grep for a type.
+**Shapes live only in the source.** Every file under `Models/`, `Errors/` and `Requests/` declares exactly one public type, named after the file, and no two share a name — so a type name *is* its path. Take it from the operation's **Type sources** table, or build it from the kind's directory below. Never grep for a type.
 
 | Group | Count | Directory (file = `<TypeName>.cs`) |
 | --- | --- | --- |
-| Records (plain `record` data models) | 284 | `Models/` |
-| Enums (`StringEnum<T>` / `IntEnum<T>`) — C# member names + wire values | 87 | `Models/Enums/` |
-| Typed error classes (`: ApiError`, one per Case A operation) | 39 | `Errors/` |
+| Records (plain `record` data models) | 6 | `Models/` |
+| Enums (`OpenStringEnum<T>` / `OpenIntEnum<T>`) — C# member names + wire values | 2 | `Models/Enums/` |
+| Typed error classes (`: ApiError`, one per Case A operation) | 15 | `Errors/` |
+| Request records (one per operation that takes input; never serialized) | 17 | `Requests/` — a controller's records sit in a folder named after it (an operation with several tags is filed under the first tag it declares) |
 
-Conventions: records are immutable, `init`-only; `required` properties must be set in the object initializer; `T?` is optional. A field's wire name is its `[JsonPropertyName]` and often differs from the C# name (`AmountInCents` ↔ `amount_in_cents`) — read it off the property, don't derive it. `OneOf`/`AnyOf` unions wrap `Optional<T>` variants — build via static factory or implicit conversion, read via `TryGet…(out …)`; `AllOf` compositions are not unions — every constituent is a `required` property, so set them all, and those constituent properties carry no `[JsonPropertyName]` and have no wire name of their own, because the generated converter flattens each constituent's own fields directly into the one parent JSON object. Enums are **not** C# enums — build with `Type.FromValue("wire")` or the static members, whose names are PascalCase even when the wire value isn't (`CollectionMethod.Invoice`, not `.invoice`).
+Conventions: records are immutable, `init`-only; `required` properties must be set in the object initializer; `T?` is optional. A field's wire name is its `[JsonPropertyName]` and often differs from the C# name (`AmountInCents` ↔ `amount_in_cents`) — read it off the property, don't derive it. `OneOf`/`AnyOf` unions wrap `Optional<T>` variants — build via static factory or implicit conversion, read via `TryGet…(out …)`; `AllOf` compositions are not unions — every constituent is a `required` property, so set them all, and those constituent properties carry no `[JsonPropertyName]` and have no wire name of their own, because the generated converter flattens each constituent's own fields directly into the one parent JSON object. Enums are **not** C# enums — use the static members, whose names are PascalCase even when the wire value isn't (`CollectionMethod.Invoice`, not `.invoice`); there is no public factory, so resolve a raw value with `TryGetKnownValue` and branch with the generated `Match`, whose `otherwise` arm receives any value the SDK does not declare.
 
 Namespaces by content type (add `using` accordingly):
 
 | Contents | Namespace |
 | --- | --- |
-| Client & options (root) | `PayPalServer` |
-| Operation controllers (`Api/`) | `PayPalServer.Api` |
-| Records (`Models/`) | `PayPalServer.Models` |
-| Enums (`Models/Enums/`) | `PayPalServer.Models.Enums` |
-| Error classes (`Errors/`) | `PayPalServer.Errors` |
+| Client & options (root) | `SwaggerPetstoreOpenApi30` |
+| Operation controllers (`Api/`) | `SwaggerPetstoreOpenApi30.Api` |
+| Records (`Models/`) | `SwaggerPetstoreOpenApi30.Models` |
+| Enums (`Models/Enums/`) | `SwaggerPetstoreOpenApi30.Models.Enums` |
+| Error classes (`Errors/`) | `SwaggerPetstoreOpenApi30.Errors` |
+| Request records (`Requests/`) | `SwaggerPetstoreOpenApi30.Requests` — plus `.<Controller>` for a controller's records (an operation with several tags is filed under the first tag it declares) |
 
 ---
 
 ## Servers & auth
 
-**OAuth2 (client credentials).** Set `options.Oauth2` with your client id and secret; tokens are fetched from `https://api-m.sandbox.paypal.com/v1/oauth2/token`. `options.Oauth2TokenStrategy` overrides how tokens are acquired and cached; leave it unset for the SDK's own handling. Oauth 2.0 authentication, OAuth 2.0 authentication, Oauth 2.0 authentication, Oauth 2.0 authentication, Oauth 2.0 authentication
+**API key (header `Authorization`).** Set `options.PetstoreAuth = "<api_key>"`; sent as the `Authorization` request header.
+
+**API key (header `api_key`).** Set `options.ApiKey = "<api_key>"`; sent as the `api_key` request header.
+
+Operation blocks name their credential in an **Auth** bullet; an operation whose spec declares no scheme carries no such bullet.
+
+- `AND` — every credential listed must be set for the call to be fully authenticated.
+- `OR` — the first credential you set that applies successfully is the one sent, in the order listed.
+
+A credential you never set is skipped rather than throwing, and the request is sent anyway — so an authentication failure can mean no credential was sent rather than a bad one. Under `OR`, if every credential you did set fails to apply, `AuthSchemeException` is thrown.
 
 **Environments.** `options.Environment` selects the target environment (`Servers/ServerEnvironment.cs`):
 
 | Environment | Value | Hosting |
 | --- | --- | --- |
-| `ServerEnvironment.Sandbox` *(default)* | `Sandbox` | PayPal Sandbox Environment |
+| `ServerEnvironment.Production` *(default)* | `production` | — |
 
-**1 server group.** Base-URL templates and override points (`options.Server.…`):
+**2 server groups.** Base-URL templates and override points (`options.Server.…`):
 
-| Group | `Sandbox` base URL | Override point |
+| Group | `Production` base URL | Override point |
 | --- | --- | --- |
-| `Default` | `https://api-m.sandbox.paypal.com` | `options.Server.Default.Sandbox.BaseUrl` |
+| `Default` | `https://petstore3.swagger.io/api/v3` | `options.Server.Default.Production.BaseUrl` |
+| `AuthServer` | `https://petstore3.swagger.io/oauth` | `options.Server.AuthServer.Production.BaseUrl` |
 
 Retry/resilience is configurable via `options.Retry` (`RetryOptions`, backed by Polly).
 

@@ -1,9 +1,9 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
-using PayPalServer.Core.Extensions;
-using PayPalServer.Core.Models;
+using SwaggerPetstoreOpenApi30.Core.Extensions;
+using SwaggerPetstoreOpenApi30.Core.Models;
 
-namespace PayPalServer.Core.Request;
+namespace SwaggerPetstoreOpenApi30.Core.Request;
 
 internal sealed class BinaryRequest : IRequest
 {

@@ -1,8 +1,8 @@
 using System;
 using Microsoft.Extensions.Logging;
-using PayPalServer.Core.Configuration;
+using SwaggerPetstoreOpenApi30.Core.Configuration;
 
-namespace PayPalServer.Core.Logging;
+namespace SwaggerPetstoreOpenApi30.Core.Logging;
 
 internal static class LoggingEnvironment
 {

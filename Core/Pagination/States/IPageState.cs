@@ -1,6 +1,6 @@
 using System.Net.Http.Headers;
 
-namespace PayPalServer.Core.Pagination.States;
+namespace SwaggerPetstoreOpenApi30.Core.Pagination.States;
 
 internal interface IPageState<in TResponse, out TState>
 {

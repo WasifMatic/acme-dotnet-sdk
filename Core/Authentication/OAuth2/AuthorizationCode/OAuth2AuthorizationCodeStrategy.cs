@@ -5,12 +5,12 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using PayPalServer.Core.ErrorResponse;
-using PayPalServer.Core.Models;
-using PayPalServer.Core.Request;
-using PayPalServer.Core.Response;
+using SwaggerPetstoreOpenApi30.Core.ErrorResponse;
+using SwaggerPetstoreOpenApi30.Core.Models;
+using SwaggerPetstoreOpenApi30.Core.Request;
+using SwaggerPetstoreOpenApi30.Core.Response;
 
-namespace PayPalServer.Core.Authentication.OAuth2.AuthorizationCode;
+namespace SwaggerPetstoreOpenApi30.Core.Authentication.OAuth2.AuthorizationCode;
 
 internal sealed class OAuth2AuthorizationCodeStrategy
     : IOAuth2RefreshableTokenStrategy<OAuth2AuthorizationCodeCredentials>
@@ -142,9 +142,9 @@ internal sealed class OAuth2AuthorizationCodeStrategy
         using var rng = RandomNumberGenerator.Create();
         rng.GetBytes(bytes);
         var verifier = Base64UrlEncode(bytes);
-        var challenge = method == PkceMethod.Plain
-            ? verifier
-            : Base64UrlEncode(Sha256Hash(Encoding.ASCII.GetBytes(verifier)));
+        var challenge = method.Match(
+            onS256: () => Base64UrlEncode(Sha256Hash(Encoding.ASCII.GetBytes(verifier))),
+            onPlain: () => verifier);
         return new PkceValues(verifier, challenge, method);
     }
 

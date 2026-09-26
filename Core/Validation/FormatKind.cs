@@ -1,4 +1,4 @@
-namespace PayPalServer.Core.Validation;
+namespace SwaggerPetstoreOpenApi30.Core.Validation;
 
 public enum FormatKind
 {

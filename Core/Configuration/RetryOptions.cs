@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 
-namespace PayPalServer.Core.Configuration;
+namespace SwaggerPetstoreOpenApi30.Core.Configuration;
 
 public record RetryOptions
 {

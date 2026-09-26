@@ -1,19 +1,16 @@
-using PayPalServer.Core;
-using PayPalServer.Core.Authentication;
-using PayPalServer.Core.Authentication.OAuth2;
-using PayPalServer.Core.Authentication.OAuth2.ClientCredentials;
+using SwaggerPetstoreOpenApi30.Core.Authentication;
+using SwaggerPetstoreOpenApi30.Core.Authentication.ApiKey;
 
-namespace PayPalServer;
+namespace SwaggerPetstoreOpenApi30;
 
 internal sealed class AuthSchemes
 {
-    public IAuthScheme Oauth2 { get; }
+    public IAuthScheme PetstoreAuth { get; }
+    public IAuthScheme ApiKey { get; }
 
-    public AuthSchemes(PayPalServerClientOptions options, Server server, RawClient rawClient)
+    public AuthSchemes(SwaggerPetstoreOpenApi30ClientOptions options)
     {
-        Oauth2 =
-            OAuth2Scheme<OAuth2ClientCredentials>.Create(options.Oauth2,
-                options.Oauth2TokenStrategy ??
-                    OAuth2ClientCredentialsStrategy.ForBasicAuthRequest(server.Default("/v1/oauth2/token"), rawClient));
+        PetstoreAuth = ApiKeyHeaderScheme.Create("Authorization", options.PetstoreAuth);
+        ApiKey = ApiKeyHeaderScheme.Create("api_key", options.ApiKey);
     }
 }

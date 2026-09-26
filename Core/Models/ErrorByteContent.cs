@@ -1,7 +1,7 @@
 using System;
 using System.Net.Http.Headers;
 
-namespace PayPalServer.Core.Models;
+namespace SwaggerPetstoreOpenApi30.Core.Models;
 
 public sealed class ErrorByteContent
 {

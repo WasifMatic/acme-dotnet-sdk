@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using PayPalServer.Core.Models;
+using SwaggerPetstoreOpenApi30.Core.Models;
 
-namespace PayPalServer.Core.Pagination.States;
+namespace SwaggerPetstoreOpenApi30.Core.Pagination.States;
 
 internal sealed record LinkState<TResponse> : IPageState<TResponse, LinkState<TResponse>>
 {

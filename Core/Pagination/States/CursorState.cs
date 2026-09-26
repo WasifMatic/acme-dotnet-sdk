@@ -1,7 +1,7 @@
 using System;
 using System.Net.Http.Headers;
 
-namespace PayPalServer.Core.Pagination.States;
+namespace SwaggerPetstoreOpenApi30.Core.Pagination.States;
 
 internal sealed record CursorState<TResponse> : IPageState<TResponse, CursorState<TResponse>>
 {

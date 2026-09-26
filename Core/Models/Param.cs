@@ -1,4 +1,4 @@
-namespace PayPalServer.Core.Models;
+namespace SwaggerPetstoreOpenApi30.Core.Models;
 
 internal readonly record struct Param(
     string? Key,

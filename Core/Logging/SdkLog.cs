@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Logging;
 
-namespace PayPalServer.Core.Logging;
+namespace SwaggerPetstoreOpenApi30.Core.Logging;
 
 internal static partial class SdkLog
 {

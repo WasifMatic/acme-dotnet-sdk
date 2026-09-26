@@ -1,8 +1,8 @@
-# PayPal Server
+# Swagger Petstore - OpenAPI 3.0
 
 [![Built with APIMatic][apimatic-badge]][apimatic-url] [![License: MIT][license-badge]][license-url]
 
-The PayPal Server SDK for .NET provides access to the PayPal Server REST APIs from .NET applications.
+The Swagger Petstore - OpenAPI 3.0 SDK for .NET provides access to the [Swagger Petstore - OpenAPI 3.0 REST APIs](https://swagger.io) from .NET applications.
 
 > [!TIP]
 > **Looking for a specific signature, model, enum, or error type?** This SDK ships a generated,
@@ -10,25 +10,23 @@ The PayPal Server SDK for .NET provides access to the PayPal Server REST APIs fr
 > **before** grepping or scanning the source tree; it answers most contract questions directly and,
 > when a source file is genuinely needed, names the exact one to open. Details under [SDK map](#sdk-map).
 
-### Important Notes
- - **Available Features:** This SDK currently contains only 5 of PayPal's API endpoints. Additional endpoints and functionality will be added in the future.
- 
- ## Information
- The PayPal Server SDK provides integration access to the PayPal REST APIs. The API endpoints are divided into distinct controllers:
- - Orders Controller: [Orders API v2](https://developer.paypal.com/docs/api/orders/v2/)
- - Payments Controller: [Payments API v2](https://developer.paypal.com/docs/api/payments/v2)
- - Vault Controller: [Payment Method Tokens API v3](https://developer.paypal.com/docs/api/payment-tokens/v3/) *Available in the US only.*
- - Transaction Search Controller: [Transaction Search API v1](https://developer.paypal.com/docs/api/transaction-search/v1/)
- - Subscriptions Controller: [Subscriptions API v1](https://developer.paypal.com/docs/api/subscriptions/v1/)
+This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
+Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
+You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+
+Some useful links:
+- [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
+- [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
 
 ---
 
 ## Installation
 
-Add the .NET SDK to your project from NuGet:
+Add the .NET SDK as a project reference into your solution:
 
 ```bash
-dotnet add package cliV1
+dotnet add reference <path-to-sdk>/SwaggerPetstoreOpenApi30.csproj
 ```
 
 ---
@@ -37,40 +35,33 @@ dotnet add package cliV1
 
 ### Dependency Injection
 
-Register the client with `IServiceCollection` and resolve it from the container. The `HttpClient` is managed by `IHttpClientFactory`. Configure the client's behavior through [PayPalServerClientOptions](PayPalServerClientOptions.cs).
+Register the client with `IServiceCollection` and resolve it from the container. The `HttpClient` is managed by `IHttpClientFactory`. Configure the client's behavior through [SwaggerPetstoreOpenApi30ClientOptions](SwaggerPetstoreOpenApi30ClientOptions.cs).
 
 ```csharp
-services.AddPayPalServerClient(options =>
+services.AddSwaggerPetstoreOpenApi30Client(options =>
     {
-        options.Oauth2 =
-            new OAuth2ClientCredentials
-            {
-                ClientId = "YOUR_CLIENT_ID",
-                ClientSecret = "YOUR_CLIENT_SECRET",
-            };
-        options.Environment = ServerEnvironment.Sandbox;
+        options.PetstoreAuth = "YOUR_API_KEY";
+        options.ApiKey = "YOUR_API_KEY";
+        options.Environment = ServerEnvironment.Production;
         // TODO: configure more client options here
     });
 ```
 
 ### Direct Instantiation
 
-Create the client by passing an `HttpClient` you manage yourself. Configure the client's behavior through [PayPalServerClientOptions](PayPalServerClientOptions.cs).
+Create the client by passing an `HttpClient` you manage yourself. Configure the client's behavior through [SwaggerPetstoreOpenApi30ClientOptions](SwaggerPetstoreOpenApi30ClientOptions.cs).
 
 ```csharp
 var httpClient = new HttpClient();
 // TODO: configure more client options here
 var options =
-    new PayPalServerClientOptions
+    new SwaggerPetstoreOpenApi30ClientOptions
     {
-        Oauth2 = new OAuth2ClientCredentials
-        {
-            ClientId = "YOUR_CLIENT_ID",
-            ClientSecret = "YOUR_CLIENT_SECRET",
-        },
-        Environment = ServerEnvironment.Sandbox,
+        PetstoreAuth = "YOUR_API_KEY",
+        ApiKey = "YOUR_API_KEY",
+        Environment = ServerEnvironment.Production,
     };
-var client = new PayPalServerClient(httpClient, options);
+var client = new SwaggerPetstoreOpenApi30Client(httpClient, options);
 ```
 
 ---
@@ -78,6 +69,24 @@ var client = new PayPalServerClient(httpClient, options);
 ## Usage
 
 For code examples and error responses, see [API Reference](api-reference.md).
+
+## Enums
+
+Every enum the spec declares is a sealed record with one `public static readonly` member per value (`PetStatus.Available`), a JSON converter, and a `Match` that makes handling exhaustive: one `on{Member}` arm per known value, then `otherwise`, which receives the raw wire value the server sent when it is one this SDK does not declare.
+
+```csharp
+var label =
+    received.Match(onAvailable: () => "Available",
+        onPending: () => "Pending",
+        onSold: () => "Sold",
+        otherwise: raw => $"undeclared ({raw})");
+```
+
+Prefer named arguments as above. The arms are positional, in the order the spec lists its values, and a regenerated SDK that adds or moves a value changes the `Match` signature: a positional call site compiled against the old shape either stops compiling or, if the assembly is not rebuilt, throws `MissingMethodException` at the first call, and a reordered value can rebind a positional argument to a different member without any diagnostic. Treat an added or moved enum value as a breaking change of that enum. Code that must survive regeneration untouched compares instead of matching: `received == PetStatus.Available` or `received.Is(rawValue)` against a raw wire value; neither reopens construction.
+
+A value the SDK does not declare still round-trips: `IsKnownValue()` tells you whether it is one of the generated members, and sending the instance back echoes the server's own casing. You cannot construct an undeclared value yourself — there is no public factory — so a typo cannot compile; resolve a raw value with `PetStatus.TryGetKnownValue("available", out var known)`.
+
+A spec value whose name would collide with the enum's own name, with a member every enum inherits or generates (such as `Value`, `Match` or `IsKnownValue`), or with a member of `object` takes a `Member` suffix — a value `value` becomes `ValueMember` — and the other members keep their plain names.
 
 ## SDK map
 
@@ -102,15 +111,75 @@ The map and the [API Reference](api-reference.md) answer different questions, an
 
 | Use | For |
 | --- | --- |
-| **[`sdk-map.md`](sdk-map.md) + [`map/`](map/)** | Traversing the SDK and working out its surface — locating the operation you need (this SDK exposes **40 operations**), its exact signature and parameter order, the shape and JSON wire names of the models it takes and returns, which error type it throws and how to read it, and the source file behind any of it. This is the index to consume the SDK from, and the one to reach for first. |
-| **[`api-reference.md`](api-reference.md)** | Usage guidance for a single operation once you know which one you want — a runnable code sample, per-parameter descriptions, and the error responses it can return. |
+| **[`sdk-map.md`](sdk-map.md) + [`map/`](map/)** | Traversing the SDK and working out its surface — locating the operation you need (this SDK exposes **19 operations**), its exact signature and request record, the shape and JSON wire names of the models it takes and returns, which error type it throws and how to read it, and the source file behind any of it. This is the index to consume the SDK from, and the one to reach for first. |
+| **[`api-reference.md`](api-reference.md)** | Usage guidance for a single operation once you know which one you want — a runnable code sample, a link to its request record, and the error responses it can return. |
+
+## Error Handling
+
+Operations throw when the server answers with an error status. `TError` is the operation's error type from the spec — `RawError` (the status code plus the raw body) when the spec declares none.
+
+```csharp
+using SwaggerPetstoreOpenApi30.Core.Exceptions;   // the exception family
+using SwaggerPetstoreOpenApi30.Errors;            // generated error types such as AddPetError
+using SwaggerPetstoreOpenApi30.Requests.PetApi;   // request records such as AddPetRequest
+
+try
+{
+    var response = await client.PetApi.AddPet(new AddPetRequest
+        {
+            Name = "doggie",
+            PhotoUrls = ["some example string"],
+            Id = 10L,
+        });
+}
+catch (ApiException<AddPetError> ex)
+{
+    // "POST <server>/pet returned 400 (BadRequest)."
+    Console.Error.WriteLine(ex.Message);
+    if (ex.Error.TryGetNoContent(out var noContent))
+    {
+        // TODO: handle 'noContent' of type RawError
+    }
+}
+```
+
+Everything the SDK raises for a call derives from `SdkException`, which carries the failed call's `Method` and `RequestUri`. Every message starts with that call, and the underlying cause is always `InnerException`.
+
+| Exception | When | Extra members |
+| --- | --- | --- |
+| `ApiException<TError>` | The server answered with an error status | `Error`, plus `StatusCode`, `Headers` and `ContentType` from `ApiException` |
+| `ResponseDeserializationException` | A response body did not match the type the spec declares | `TargetType`, plus the `ApiException` members |
+| `SdkConnectionException` | The request could not be sent, or the response body could not be read |  |
+| `SdkTimeoutException` | An attempt, the transport, or a Server-Sent Events stream went silent (derives from `SdkConnectionException`) | `Timeout` |
+| `AuthSchemeException` | A credential could not be applied — for example the OAuth2 token endpoint refused it | `SchemeFailures` |
+
+Catch from specific to general: `ApiException` means the server answered, `SdkConnectionException` means it did not, and `SdkException` is everything the SDK raises. Your own cancellation surfaces as the usual `OperationCanceledException`, never wrapped.
+
+---
 
 ## Best Practices
 
 > [!TIP]
-> Use a **single `PayPalServerClient` instance** for the lifetime of your application and
+> Use a **single `SwaggerPetstoreOpenApi30Client` instance** for the lifetime of your application and
 > reuse it across all requests. Creating a new instance per request might exhaust the
 > connection pool.
+
+> [!TIP]
+> Let the SDK own timeouts. `RetryOptions.Timeout` bounds **each attempt** (default 100 s)
+> and a timed-out attempt is retried under the configured retry policy before it surfaces as
+> `SdkTimeoutException`; `Retry-After` response headers are honored when the server sends them.
+> Set `HttpClient.Timeout` to `Timeout.InfiniteTimeSpan` (or comfortably above
+> `RetryOptions.Timeout`) so the transport does not race the SDK — a transport-level timeout
+> surfaces as the same `SdkTimeoutException` but cannot be retried.
+
+> [!TIP]
+> The SDK reads time only through `SwaggerPetstoreOpenApi30ClientOptions.TimeProvider` (default
+> `TimeProvider.System`): retry backoff, `Retry-After`, the SSE idle timeout, OAuth2 token
+> expiry and the logged request durations all follow it. Under `AddSwaggerPetstoreOpenApi30Client` a
+> `TimeProvider` registered in the container is picked up automatically, and setting the
+> option explicitly wins. To fake time in your own tests use a provider that implements
+> timers, such as `FakeTimeProvider` from `Microsoft.Extensions.TimeProvider.Testing`, so
+> retries and idle timeouts advance with it.
 
 ## License
 
@@ -121,6 +190,8 @@ This SDK is distributed under the [MIT License](LICENSE).
 ## Support
 
 Refer to the [API reference](api-reference.md) for detailed information on available operations with code samples.
+
+For further assistance, please contact support at apiteam@swagger.io.
 
 ---
 

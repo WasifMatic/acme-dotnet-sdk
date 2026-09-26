@@ -1,9 +1,9 @@
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using PayPalServer.Core.ErrorResponse;
+using SwaggerPetstoreOpenApi30.Core.ErrorResponse;
+using SwaggerPetstoreOpenApi30.Core.Models;
 
-namespace PayPalServer.Core.Response;
+namespace SwaggerPetstoreOpenApi30.Core.Response;
 
 internal sealed class RawErrorBodyResponse : IResponse<RawError>
 {
@@ -11,6 +11,6 @@ internal sealed class RawErrorBodyResponse : IResponse<RawError>
 
     private RawErrorBodyResponse() { }
 
-    public ValueTask<RawError> Map(HttpResponseMessage httpResponseMessage, CancellationToken cancellationToken) =>
-        new(RawError.Create(httpResponseMessage, cancellationToken));
+    public ValueTask<RawError> Map(ResponseContext context, CancellationToken cancellationToken) =>
+        new(RawError.Create(context.Response, cancellationToken));
 }

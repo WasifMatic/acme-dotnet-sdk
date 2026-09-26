@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace PayPalServer.Core.Authentication.Basic;
+namespace SwaggerPetstoreOpenApi30.Core.Authentication.Basic;
 
 public sealed class BasicAuthCredentials
 {

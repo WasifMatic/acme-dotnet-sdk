@@ -4,12 +4,12 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using PayPalServer.Core.ErrorResponse;
-using PayPalServer.Core.Models;
-using PayPalServer.Core.Request;
-using PayPalServer.Core.Response;
+using SwaggerPetstoreOpenApi30.Core.ErrorResponse;
+using SwaggerPetstoreOpenApi30.Core.Models;
+using SwaggerPetstoreOpenApi30.Core.Request;
+using SwaggerPetstoreOpenApi30.Core.Response;
 
-namespace PayPalServer.Core.Authentication.OAuth2.Password;
+namespace SwaggerPetstoreOpenApi30.Core.Authentication.OAuth2.Password;
 
 internal sealed class OAuth2PasswordCredentialsStrategy : IOAuth2TokenStrategy<OAuth2PasswordCredentials>
 {

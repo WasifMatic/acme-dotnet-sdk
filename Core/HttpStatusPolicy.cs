@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
-namespace PayPalServer.Core;
+namespace SwaggerPetstoreOpenApi30.Core;
 
 internal sealed class HttpStatusPolicy
 {

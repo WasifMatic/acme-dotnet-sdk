@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using Polly;
 using Polly.Retry;
 using Polly.Timeout;
-using PayPalServer.Core.Configuration;
-using PayPalServer.Core.Logging;
-using PayPalServer.Core.Request;
+using SwaggerPetstoreOpenApi30.Core.Configuration;
+using SwaggerPetstoreOpenApi30.Core.Logging;
+using SwaggerPetstoreOpenApi30.Core.Request;
 
-namespace PayPalServer.Core;
+namespace SwaggerPetstoreOpenApi30.Core;
 
 internal sealed class ResiliencePipelineFactory
 {
@@ -25,9 +25,8 @@ internal sealed class ResiliencePipelineFactory
     private readonly ResiliencePipeline<HttpResponseMessage> _pipeline;
     private readonly ResiliencePipeline<HttpResponseMessage> _timeoutOnly;
 
-    public ResiliencePipelineFactory(RetryOptions options, TimeProvider? clock = null)
+    public ResiliencePipelineFactory(RetryOptions options, TimeProvider clock)
     {
-        clock ??= TimeProvider.System;
         _pipeline = CreateResiliencePipeline(options, clock);
         _timeoutOnly = options.MaxRetries <= 0
             ? _pipeline

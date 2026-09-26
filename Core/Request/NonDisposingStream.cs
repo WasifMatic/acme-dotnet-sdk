@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PayPalServer.Core.Request;
+namespace SwaggerPetstoreOpenApi30.Core.Request;
 
 internal sealed class NonDisposingStream : Stream
 {

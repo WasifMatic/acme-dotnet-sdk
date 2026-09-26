@@ -1,7 +1,7 @@
 using System.Net.Http;
-using PayPalServer.Core.Extensions;
+using SwaggerPetstoreOpenApi30.Core.Extensions;
 
-namespace PayPalServer.Core.Request;
+namespace SwaggerPetstoreOpenApi30.Core.Request;
 
 internal sealed class EmptyBody : IRequest
 {

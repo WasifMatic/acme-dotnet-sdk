@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Extensions.Logging;
 
-namespace PayPalServer.Core.Logging;
+namespace SwaggerPetstoreOpenApi30.Core.Logging;
 
 internal sealed class ConsoleErrorLoggerFactory : ILoggerFactory
 {

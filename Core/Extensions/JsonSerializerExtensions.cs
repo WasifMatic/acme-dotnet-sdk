@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace PayPalServer.Core.Extensions;
+namespace SwaggerPetstoreOpenApi30.Core.Extensions;
 
 internal static class JsonSerializerExtensions
 {

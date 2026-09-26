@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using PayPalServer.Core.Models;
+using SwaggerPetstoreOpenApi30.Core.Models;
 
-namespace PayPalServer.Core.Extensions;
+namespace SwaggerPetstoreOpenApi30.Core.Extensions;
 
 internal static class HttpRequestExtensions
 {

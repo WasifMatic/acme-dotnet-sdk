@@ -1,7 +1,7 @@
-using PayPalServer.Core.ErrorResponse;
-using PayPalServer.Core.Response;
+using SwaggerPetstoreOpenApi30.Core.ErrorResponse;
+using SwaggerPetstoreOpenApi30.Core.Response;
 
-namespace PayPalServer.Core.Models;
+namespace SwaggerPetstoreOpenApi30.Core.Models;
 
 internal sealed class ApiResponse<TResponse, TError>
 {

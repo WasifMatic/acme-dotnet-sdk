@@ -1,9 +1,9 @@
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using PayPalServer.Core.Extensions;
+using SwaggerPetstoreOpenApi30.Core.Extensions;
 
-namespace PayPalServer.Core.Converters;
+namespace SwaggerPetstoreOpenApi30.Core.Converters;
 
 internal sealed class Rfc1123DateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 {

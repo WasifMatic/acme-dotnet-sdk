@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Net.Http;
-using PayPalServer.Core.Authentication;
-using PayPalServer.Core.Request;
+using SwaggerPetstoreOpenApi30.Core.Authentication;
+using SwaggerPetstoreOpenApi30.Core.Request;
 
-namespace PayPalServer.Core.Models;
+namespace SwaggerPetstoreOpenApi30.Core.Models;
 
 internal sealed class ApiRequest
 {

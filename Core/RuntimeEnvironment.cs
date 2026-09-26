@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace PayPalServer.Core;
+namespace SwaggerPetstoreOpenApi30.Core;
 
 internal static class RuntimeEnvironment
 {

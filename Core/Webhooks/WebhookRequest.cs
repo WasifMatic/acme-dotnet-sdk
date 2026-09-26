@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PayPalServer.Core.Webhooks;
+namespace SwaggerPetstoreOpenApi30.Core.Webhooks;
 
 public sealed class WebhookRequest
 {

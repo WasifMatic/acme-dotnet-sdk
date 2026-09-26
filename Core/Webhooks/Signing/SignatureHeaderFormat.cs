@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PayPalServer.Core.Webhooks.Signing;
+namespace SwaggerPetstoreOpenApi30.Core.Webhooks.Signing;
 
 internal abstract record SignatureHeaderFormat
 {

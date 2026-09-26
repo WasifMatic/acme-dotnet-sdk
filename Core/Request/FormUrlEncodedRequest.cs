@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using PayPalServer.Core.Models;
+using SwaggerPetstoreOpenApi30.Core.Models;
 
-namespace PayPalServer.Core.Request;
+namespace SwaggerPetstoreOpenApi30.Core.Request;
 
 internal sealed class FormUrlEncodedRequest : IRequest
 {

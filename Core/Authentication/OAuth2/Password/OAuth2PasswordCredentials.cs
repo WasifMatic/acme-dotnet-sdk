@@ -1,4 +1,4 @@
-namespace PayPalServer.Core.Authentication.OAuth2.Password;
+namespace SwaggerPetstoreOpenApi30.Core.Authentication.OAuth2.Password;
 
 public sealed class OAuth2PasswordCredentials
 {

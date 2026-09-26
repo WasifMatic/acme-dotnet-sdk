@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using PayPalServer.Core.Hooks;
+using SwaggerPetstoreOpenApi30.Core.Hooks;
 
-namespace PayPalServer.Core;
+namespace SwaggerPetstoreOpenApi30.Core;
 
 public sealed record RequestOptions
 {

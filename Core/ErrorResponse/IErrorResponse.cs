@@ -1,10 +1,10 @@
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using SwaggerPetstoreOpenApi30.Core.Models;
 
-namespace PayPalServer.Core.ErrorResponse;
+namespace SwaggerPetstoreOpenApi30.Core.ErrorResponse;
 
-public interface IErrorResponse<TError>
+internal interface IErrorResponse<TError>
 {
-    Task<TError> Map(HttpResponseMessage response, CancellationToken ct);
+    Task<TError> Map(ResponseContext context, CancellationToken cancellationToken);
 }

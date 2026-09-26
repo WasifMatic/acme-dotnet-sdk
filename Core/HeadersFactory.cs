@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PayPalServer.Core.Models;
+using SwaggerPetstoreOpenApi30.Core.Models;
 
-namespace PayPalServer.Core;
+namespace SwaggerPetstoreOpenApi30.Core;
 
 internal sealed class HeadersFactory
 {

@@ -1,6 +1,6 @@
 using System.Net.Http;
 
-namespace PayPalServer.Core.Extensions;
+namespace SwaggerPetstoreOpenApi30.Core.Extensions;
 
 internal static class HttpContentExtension
 {

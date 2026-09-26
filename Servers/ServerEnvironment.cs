@@ -1,29 +1,24 @@
 using System;
 using System.Text.Json.Serialization;
-using PayPalServer.Core.Enum;
+using SwaggerPetstoreOpenApi30.Core.Enum;
 
-namespace PayPalServer.Servers;
+namespace SwaggerPetstoreOpenApi30.Servers;
 
 [JsonConverter(typeof(StringEnumConverter<ServerEnvironment>))]
-public record ServerEnvironment : StringEnum<ServerEnvironment>
+public sealed record ServerEnvironment : ClosedStringEnum<ServerEnvironment>
 {
-    /// <summary>
-    /// PayPal Sandbox Environment
-    /// </summary>
-    public static readonly ServerEnvironment Sandbox = new("Sandbox");
-
     private ServerEnvironment(string value) : base(value)
     {
     }
 
-    internal T Match<T>(Func<T> onSandbox) =>
+    public static readonly ServerEnvironment Production = new("production");
+
+    public static ServerEnvironment Default() => Production;
+
+    internal TResult Match<TResult>(Func<TResult> onProduction) =>
         this switch
         {
-            _ when this == Sandbox => onSandbox(),
-            _ => throw new ArgumentOutOfRangeException(nameof(ServerEnvironment),
-                this,
-                $"Unknown {nameof(ServerEnvironment)} value.")
+            _ when this == Production => onProduction(),
+            _ => throw new InvalidOperationException($"{nameof(ServerEnvironment)} holds no known value.")
         };
-
-    public static ServerEnvironment Default() => Sandbox;
 }

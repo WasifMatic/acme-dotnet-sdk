@@ -1,7 +1,7 @@
-using PayPalServer.Core.Models;
-using PayPalServer.Servers;
+using SwaggerPetstoreOpenApi30.Core.Models;
+using SwaggerPetstoreOpenApi30.Servers;
 
-namespace PayPalServer;
+namespace SwaggerPetstoreOpenApi30;
 
 public class Server
 {
@@ -15,4 +15,5 @@ public class Server
     }
 
     internal UrlTemplate Default(string path) => _options.Default.Resolve(_environment, path);
+    internal UrlTemplate AuthServer(string path) => _options.AuthServer.Resolve(_environment, path);
 }

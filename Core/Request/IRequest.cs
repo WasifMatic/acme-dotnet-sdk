@@ -1,6 +1,6 @@
 using System.Net.Http;
 
-namespace PayPalServer.Core.Request;
+namespace SwaggerPetstoreOpenApi30.Core.Request;
 
 internal interface IRequest
 {

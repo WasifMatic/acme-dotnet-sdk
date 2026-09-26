@@ -3,19 +3,23 @@ using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace PayPalServer;
+namespace SwaggerPetstoreOpenApi30;
 
 public static class ServiceCollectionExtensions
 {
     extension(IServiceCollection services)
     {
-        public IServiceCollection AddPayPalServerClient(Action<PayPalServerClientOptions>? configure = null)
+        public IServiceCollection AddSwaggerPetstoreOpenApi30Client(Action<SwaggerPetstoreOpenApi30ClientOptions>? configure = null)
         {
-            var options = new PayPalServerClientOptions();
-            configure?.Invoke(options);
             services.AddHttpClient();
             services.AddSingleton(sp =>
                 {
+                    var options =
+                        new SwaggerPetstoreOpenApi30ClientOptions
+                        {
+                            TimeProvider = sp.GetService<TimeProvider>() ?? TimeProvider.System,
+                        };
+                    configure?.Invoke(options);
                     options.Logging =
                         options.Logging with
                         {
@@ -23,7 +27,7 @@ public static class ServiceCollectionExtensions
                         };
                     var httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
                     var httpClient = httpClientFactory.CreateClient();
-                    return new PayPalServerClient(httpClient, options);
+                    return new SwaggerPetstoreOpenApi30Client(httpClient, options);
                 });
             return services;
         }

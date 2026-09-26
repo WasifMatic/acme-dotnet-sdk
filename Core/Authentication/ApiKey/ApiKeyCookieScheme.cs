@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PayPalServer.Core.Authentication.ApiKey;
+namespace SwaggerPetstoreOpenApi30.Core.Authentication.ApiKey;
 
 internal sealed class ApiKeyCookieScheme : IAuthScheme
 {

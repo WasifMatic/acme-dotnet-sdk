@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http.Headers;
 
-namespace PayPalServer.Core.Extensions;
+namespace SwaggerPetstoreOpenApi30.Core.Extensions;
 
 internal static class HeaderValueExtensions
 {

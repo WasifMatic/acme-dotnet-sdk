@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace PayPalServer.Core.Webhooks;
+namespace SwaggerPetstoreOpenApi30.Core.Webhooks;
 
 public abstract class WebhookEventParser<TEvent>
     where TEvent : class

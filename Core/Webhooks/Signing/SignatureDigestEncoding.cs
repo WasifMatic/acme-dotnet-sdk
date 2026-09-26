@@ -1,6 +1,6 @@
 using System;
 
-namespace PayPalServer.Core.Webhooks.Signing;
+namespace SwaggerPetstoreOpenApi30.Core.Webhooks.Signing;
 
 internal abstract record SignatureDigestEncoding
 {

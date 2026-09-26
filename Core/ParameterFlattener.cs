@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using PayPalServer.Core.Models;
+using SwaggerPetstoreOpenApi30.Core.Models;
 
-namespace PayPalServer.Core;
+namespace SwaggerPetstoreOpenApi30.Core;
 
 internal static class ParameterFlattener
 {

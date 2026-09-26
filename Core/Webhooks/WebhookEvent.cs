@@ -1,6 +1,6 @@
-using PayPalServer.Core.Enum;
+using SwaggerPetstoreOpenApi30.Core.Enum;
 
-namespace PayPalServer.Core.Webhooks;
+namespace SwaggerPetstoreOpenApi30.Core.Webhooks;
 
 public abstract record WebhookEvent<TPayload>
 {

@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PayPalServer.Core.Authentication.Bearer;
+namespace SwaggerPetstoreOpenApi30.Core.Authentication.Bearer;
 
 internal sealed class BearerAuthScheme : IAuthScheme
 {

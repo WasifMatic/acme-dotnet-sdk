@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
-using PayPalServer.Core.Extensions;
+using SwaggerPetstoreOpenApi30.Core.Extensions;
 
-namespace PayPalServer.Core.Models;
+namespace SwaggerPetstoreOpenApi30.Core.Models;
 
 public sealed class AdditionalProperties : IDictionary<string, JsonElement>, IEquatable<AdditionalProperties>
 {

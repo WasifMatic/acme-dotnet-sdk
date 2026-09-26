@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 
-namespace PayPalServer.Core.Validation;
+namespace SwaggerPetstoreOpenApi30.Core.Validation;
 
 internal static class SchemaConstraintExtensions
 {

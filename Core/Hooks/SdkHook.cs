@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PayPalServer.Core.Hooks;
+namespace SwaggerPetstoreOpenApi30.Core.Hooks;
 
 public abstract class SdkHook
 {

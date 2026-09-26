@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 
-namespace PayPalServer.Core.Configuration;
+namespace SwaggerPetstoreOpenApi30.Core.Configuration;
 
 public record LoggingOptions
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json;
 
-namespace PayPalServer.Core.Webhooks;
+namespace SwaggerPetstoreOpenApi30.Core.Webhooks;
 
 internal abstract record WebhookTypeSource
 {

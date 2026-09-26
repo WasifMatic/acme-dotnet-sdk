@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
 
-namespace PayPalServer.Core.Webhooks.Signing;
+namespace SwaggerPetstoreOpenApi30.Core.Webhooks.Signing;
 
 internal abstract record SignatureAlgorithm
 {
