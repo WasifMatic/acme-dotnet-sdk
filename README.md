@@ -23,7 +23,13 @@ Some useful links:
 
 ## Installation
 
-Add the .NET SDK as a project reference into your solution:
+Once the package is published, add the .NET SDK to your project from NuGet:
+
+```bash
+dotnet add package cliV1
+```
+
+To build against the SDK source instead, add it as a project reference into your solution:
 
 ```bash
 dotnet add reference <path-to-sdk>/SwaggerPetstoreOpenApi30.csproj

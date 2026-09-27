@@ -5,7 +5,18 @@
         <Nullable>enable</Nullable>
         <LangVersion>14</LangVersion>
         <ImplicitUsings>disable</ImplicitUsings>
-        <NoWarn>$(NoWarn);649</NoWarn>
+        <PackageId>cliV1</PackageId>
+        <AssemblyName>cliV1</AssemblyName>
+        <Authors>Username</Authors>
+        <Description>dwwwwwwwwwwwwwwww</Description>
+        <PackageTags>Test;Pet;Store</PackageTags>
+        <PackageProjectUrl>https://dev.acme.org</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/WasifMatic/acme-dotnet-sdk.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591;1570;649</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,6 +32,11 @@
         <PackageReference Include="System.Net.Http.Json" Version="10.0.8" />
         <PackageReference Include="System.Net.ServerSentEvents" Version="10.0.8" />
         <PackageReference Include="System.Text.Json" Version="10.0.8" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
+        <None Include="LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>
