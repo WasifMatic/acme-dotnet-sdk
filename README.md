@@ -1,89 +1,51 @@
 
-# Getting Started with Swagger Petstore - OpenAPI 3.1.0
+# Getting Started with APIMATIC Calculator
 
 ## Introduction
 
-This is a sample Pet Store Server based on the OpenAPI 3.1.0 specification.  You can find out more about
-Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
-You can now help us improve the API whether it's by making changes to the definition itself or to the code.
-That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
-
-Some useful links:
-
-- [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
-- [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
-
-Find out more about Swagger: [https://swagger.io](https://swagger.io)
+Simple calculator API hosted on APIMATIC
 
 ## Install the Package
 
 If you are building with .NET CLI tools then you can also use the following command:
 
 ```bash
-dotnet add package cliV1 --version 0.1.6
+dotnet add package cliV1 --version 17.0.2
 ```
 
 You can also view the package at:
-https://www.nuget.org/packages/cliV1/0.1.6
-
-## Test the SDK
-
-The generated SDK also contain one or more Tests, which are contained in the Tests project. In order to invoke these test cases, you will need `NUnit 3.0 Test Adapter Extension` for Visual Studio. Once the SDK is complied, the test cases should appear in the Test Explorer window. Here, you can click `Run All` to execute these test cases.
+https://www.nuget.org/packages/cliV1/17.0.2
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| Environment | [`Environment`](README.md#environments) | The API environment. <br> **Default: `Environment.Production`** |
 | Timeout | `TimeSpan` | Http client timeout.<br>*Default*: `TimeSpan.FromSeconds(100)` |
-| HttpClientConfiguration | [`Action<HttpClientConfiguration.Builder>`](doc/http-client-configuration-builder.md) | Action delegate that configures the HTTP client by using the HttpClientConfiguration.Builder for customizing API call settings.<br>*Default*: `new HttpClient()` |
-| PetstoreAuthCredentials | [`PetstoreAuthCredentials`](doc/auth/oauth-2-implicit-grant.md) | The Credentials Setter for OAuth 2 Implicit Grant |
-| ApiKeyCredentials | [`ApiKeyCredentials`](doc/auth/custom-header-signature.md) | The Credentials Setter for Custom Header Signature |
+| HttpClientConfiguration | [`Action<HttpClientConfiguration.Builder>`](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/http-client-configuration-builder.md) | Action delegate that configures the HTTP client by using the HttpClientConfiguration.Builder for customizing API call settings.<br>*Default*: `new HttpClient()` |
 
 The API client can be initialized as follows:
 
 ### Code-Based Initialization
 
 ```csharp
-using SwaggerPetstoreOpenAPI310.Standard;
-using SwaggerPetstoreOpenAPI310.Standard.Authentication;
-using SwaggerPetstoreOpenAPI310.Standard.Models;
-using System.Collections.Generic;
+using APIMATICCalculator.Standard;
 
 namespace ConsoleApp;
 
-SwaggerPetstoreOpenAPI310Client client = new SwaggerPetstoreOpenAPI310Client.Builder()
-    .PetstoreAuthCredentials(
-        new PetstoreAuthModel.Builder(
-            "OAuthClientId",
-            "OAuthRedirectUri"
-        )
-        .OAuthScopes(
-            new List<OAuthScopePetstoreAuthEnum>
-            {
-                OAuthScopePetstoreAuthEnum.Writepets,
-                OAuthScopePetstoreAuthEnum.Readpets,
-            })
-        .Build())
-    .ApiKeyCredentials(
-        new ApiKeyModel.Builder(
-            "api_key"
-        )
-        .Build())
+APIMATICCalculatorClient client = new APIMATICCalculatorClient.Builder()
     .HttpClientConfig(httpClientConfig =>
         httpClientConfig.Timeout(TimeSpan.FromSeconds(100)))
-    .Environment(SwaggerPetstoreOpenAPI310.Standard.Environment.Production)
     .Build();
 ```
 
 ### Configuration-Based Initialization
 
 ```csharp
-using SwaggerPetstoreOpenAPI310.Standard;
+using APIMATICCalculator.Standard;
 using Microsoft.Extensions.Configuration;
 
 namespace ConsoleApp;
@@ -95,56 +57,35 @@ var configuration = new ConfigurationBuilder()
     .Build();
 
 // Instantiate your SDK and configure it from IConfiguration
-var client = SwaggerPetstoreOpenAPI310Client
-    .FromConfiguration(configuration.GetSection("SwaggerPetstoreOpenAPI310"));
+var client = APIMATICCalculatorClient
+    .FromConfiguration(configuration.GetSection("APIMATICCalculator"));
 ```
 
-See the [Configuration-Based Initialization](doc/configuration-based-initialization.md) section for details.
-
-## Environments
-
-The SDK can be configured to use a different environment for making API calls. Available environments are:
-
-### Fields
-
-| Name | Description |
-|  --- | --- |
-| Production | **Default** |
-
-## Authorization
-
-This API uses the following authentication schemes.
-
-* [`petstore_auth (OAuth 2 Implicit Grant)`](doc/auth/oauth-2-implicit-grant.md)
-* [`api_key (Custom Header Signature)`](doc/auth/custom-header-signature.md)
+See the [Configuration-Based Initialization](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/configuration-based-initialization.md) section for details.
 
 ## List of APIs
 
-* [Pet](doc/controllers/pet.md)
-* [Store](doc/controllers/store.md)
-* [User](doc/controllers/user.md)
+* [Simple Calculator](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/controllers/simple-calculator.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [Configuration-Based Initialization](doc/configuration-based-initialization.md)
-* [HttpClientConfiguration](doc/http-client-configuration.md)
-* [HttpClientConfigurationBuilder](doc/http-client-configuration-builder.md)
-* [ProxyConfigurationBuilder](doc/proxy-configuration-builder.md)
+* [Configuration-Based Initialization](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/configuration-based-initialization.md)
+* [HttpClientConfiguration](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/http-client-configuration.md)
+* [HttpClientConfigurationBuilder](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/http-client-configuration-builder.md)
+* [ProxyConfigurationBuilder](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/proxy-configuration-builder.md)
 
 ### HTTP
 
-* [HttpCallback](doc/http-callback.md)
-* [HttpContext](doc/http-context.md)
-* [HttpRequest](doc/http-request.md)
-* [HttpResponse](doc/http-response.md)
-* [HttpStringResponse](doc/http-string-response.md)
+* [HttpCallback](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/http-callback.md)
+* [HttpContext](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/http-context.md)
+* [HttpRequest](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/http-request.md)
+* [HttpResponse](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/http-response.md)
+* [HttpStringResponse](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/http-string-response.md)
 
 ### Utilities
 
-* [ApiException](doc/api-exception.md)
-* [ApiHelper](doc/api-helper.md)
-* [CustomDateTimeConverter](doc/custom-date-time-converter.md)
-* [UnixDateTimeConverter](doc/unix-date-time-converter.md)
+* [ApiException](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/api-exception.md)
+* [ApiHelper](https://www.github.com/WasifMatic/acme-dotnet-sdk/tree/17.0.2/doc/api-helper.md)
 

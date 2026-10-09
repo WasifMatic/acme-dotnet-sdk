@@ -16,9 +16,9 @@ The following code sample demonstrates how to initialize the SDK client using an
 The `Builder.FromConfiguration` method reads values from the provided configuration section and returns a builder instance, allowing you to override specific properties directly in code if needed before building the final client.
 
 ```csharp
-using SwaggerPetstoreOpenAPI310.Standard;
+using APIMATICCalculator.Standard;
 using Microsoft.Extensions.Configuration;
-using Environment = SwaggerPetstoreOpenAPI310.Standard.Environment;
+using Environment = APIMATICCalculator.Standard.Environment;
 
 namespace ConsoleApp;
 
@@ -29,8 +29,8 @@ var configuration = new ConfigurationBuilder()
     .Build();
 
 // Instantiate your SDK builder and configure it from IConfiguration with overrides
-var client = SwaggerPetstoreOpenAPI310Client.Builder
-    .FromConfiguration(configuration.GetSection("SwaggerPetstoreOpenAPI310"))
+var client = APIMATICCalculatorClient.Builder
+    .FromConfiguration(configuration.GetSection("APIMATICCalculator"))
     .Environment(Environment.Production)
     .HttpClientConfig(c => c.Timeout(TimeSpan.FromSeconds(60)))
     .Build();
@@ -40,16 +40,8 @@ var client = SwaggerPetstoreOpenAPI310Client.Builder
 
 ```csharp
 {
-  "SwaggerPetstoreOpenAPI310": {
+  "APIMATICCalculator": {
     "Environment": "production",
-    "PetstoreAuthCredentials": {
-      "OAuthClientId": "oAuthClientId",
-      "OAuthRedirectUri": "oAuthRedirectUri",
-      "OAuthScopes": [],
-    },
-    "ApiKeyCredentials": {
-      "ApiKey": "apiKey",
-    },
     "HttpClientConfig": {
       "Timeout": "00:01:00",
       "NumberOfRetries": 3,
