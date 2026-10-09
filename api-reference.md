@@ -2,11 +2,11 @@
 
 Every operation below is shown in its throwing form. On an error status it throws `ApiException<TError>` — the status code, headers, content type and the operation's error type, `RawError` (the raw body) when the spec declares none — and where an operation offers an `…AsResult` sibling, that sibling returns `ApiResult<TResponse, TError>` instead. A request that produces no usable response surfaces as `SdkConnectionException` or `SdkTimeoutException`, a body that does not match the documented response type as `ResponseDeserializationException`, and a credential that cannot be applied as `AuthSchemeException`; all of them derive from `SdkException` and name the failed call. See [README → Error Handling](README.md#error-handling).
 
-> Source: [SwaggerPetstoreOpenApi30Client](SwaggerPetstoreOpenApi30Client.cs)
+> Source: [SwaggerPetstoreOpenApi310Client](src/SwaggerPetstoreOpenApi310/SwaggerPetstoreOpenApi310Client.cs)
 
 ## PetApi
 
-> Source: [PetApi](Api/PetApi.cs)
+> Source: [PetApi](src/SwaggerPetstoreOpenApi310/Api/PetApi.cs)
 
 <details>
 <summary><code>Task&lt;Pet&gt; AddPet(AddPetRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
@@ -33,11 +33,11 @@ Add a new pet to the store.
 try
 {
     var response = await client.PetApi.AddPet(new AddPetRequest
-        {
-            Name = "doggie",
-            PhotoUrls = ["some example string"],
-            Id = 10L,
-        });
+    {
+        Name = "doggie",
+        PhotoUrls = ["some example string"],
+        Id = 10L,
+    });
     // TODO: Handle 'response' of type Pet
 }
 catch (ApiException<AddPetError> ex)
@@ -57,7 +57,7 @@ catch (ApiException<AddPetError> ex)
 <dl>
 <dd>
 
-<code>[AddPetRequest](Requests/PetApi/AddPetRequest.cs)</code>
+<code>[AddPetRequest](src/SwaggerPetstoreOpenApi310/Requests/PetApi/AddPetRequest.cs)</code>
 
 </dd>
 </dl>
@@ -67,9 +67,9 @@ catch (ApiException<AddPetError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[Pet](Models/Pet.cs)</code>
+**OnSuccess**: <code>[Pet](src/SwaggerPetstoreOpenApi310/Models/Pet.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[AddPetError](Errors/AddPetError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[AddPetError](src/SwaggerPetstoreOpenApi310/Errors/AddPetError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -103,10 +103,7 @@ Delete a pet.
 ```csharp
 try
 {
-    await client.PetApi.DeletePet(new DeletePetRequest
-        {
-            PetId = 10L,
-        });
+    await client.PetApi.DeletePet(new DeletePetRequest { PetId = 10L });
 }
 catch (ApiException<DeletePetError> ex)
 {
@@ -125,7 +122,7 @@ catch (ApiException<DeletePetError> ex)
 <dl>
 <dd>
 
-<code>[DeletePetRequest](Requests/PetApi/DeletePetRequest.cs)</code>
+<code>[DeletePetRequest](src/SwaggerPetstoreOpenApi310/Requests/PetApi/DeletePetRequest.cs)</code>
 
 </dd>
 </dl>
@@ -137,7 +134,7 @@ catch (ApiException<DeletePetError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[DeletePetError](Errors/DeletePetError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[DeletePetError](src/SwaggerPetstoreOpenApi310/Errors/DeletePetError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -191,7 +188,7 @@ catch (ApiException<FindPetsByStatusError> ex)
 <dl>
 <dd>
 
-<code>[FindPetsByStatusRequest](Requests/PetApi/FindPetsByStatusRequest.cs)</code>
+<code>[FindPetsByStatusRequest](src/SwaggerPetstoreOpenApi310/Requests/PetApi/FindPetsByStatusRequest.cs)</code>
 
 </dd>
 </dl>
@@ -201,9 +198,9 @@ catch (ApiException<FindPetsByStatusError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>IReadOnlyList&lt;[Pet](Models/Pet.cs)&gt;</code>
+**OnSuccess**: <code>IReadOnlyList&lt;[Pet](src/SwaggerPetstoreOpenApi310/Models/Pet.cs)&gt;</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[FindPetsByStatusError](Errors/FindPetsByStatusError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[FindPetsByStatusError](src/SwaggerPetstoreOpenApi310/Errors/FindPetsByStatusError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -257,7 +254,7 @@ catch (ApiException<FindPetsByTagsError> ex)
 <dl>
 <dd>
 
-<code>[FindPetsByTagsRequest](Requests/PetApi/FindPetsByTagsRequest.cs)</code>
+<code>[FindPetsByTagsRequest](src/SwaggerPetstoreOpenApi310/Requests/PetApi/FindPetsByTagsRequest.cs)</code>
 
 </dd>
 </dl>
@@ -267,9 +264,9 @@ catch (ApiException<FindPetsByTagsError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>IReadOnlyList&lt;[Pet](Models/Pet.cs)&gt;</code>
+**OnSuccess**: <code>IReadOnlyList&lt;[Pet](src/SwaggerPetstoreOpenApi310/Models/Pet.cs)&gt;</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[FindPetsByTagsError](Errors/FindPetsByTagsError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[FindPetsByTagsError](src/SwaggerPetstoreOpenApi310/Errors/FindPetsByTagsError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -303,10 +300,7 @@ Returns a single pet.
 ```csharp
 try
 {
-    var response = await client.PetApi.GetPetById(new GetPetByIdRequest
-        {
-            PetId = 10L,
-        });
+    var response = await client.PetApi.GetPetById(new GetPetByIdRequest { PetId = 10L });
     // TODO: Handle 'response' of type Pet
 }
 catch (ApiException<GetPetByIdError> ex)
@@ -326,7 +320,7 @@ catch (ApiException<GetPetByIdError> ex)
 <dl>
 <dd>
 
-<code>[GetPetByIdRequest](Requests/PetApi/GetPetByIdRequest.cs)</code>
+<code>[GetPetByIdRequest](src/SwaggerPetstoreOpenApi310/Requests/PetApi/GetPetByIdRequest.cs)</code>
 
 </dd>
 </dl>
@@ -336,9 +330,9 @@ catch (ApiException<GetPetByIdError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[Pet](Models/Pet.cs)</code>
+**OnSuccess**: <code>[Pet](src/SwaggerPetstoreOpenApi310/Models/Pet.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[GetPetByIdError](Errors/GetPetByIdError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[GetPetByIdError](src/SwaggerPetstoreOpenApi310/Errors/GetPetByIdError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -373,11 +367,11 @@ Update an existing pet by Id.
 try
 {
     var response = await client.PetApi.UpdatePet(new UpdatePetRequest
-        {
-            Name = "doggie",
-            PhotoUrls = ["some example string"],
-            Id = 10L,
-        });
+    {
+        Name = "doggie",
+        PhotoUrls = ["some example string"],
+        Id = 10L,
+    });
     // TODO: Handle 'response' of type Pet
 }
 catch (ApiException<UpdatePetError> ex)
@@ -397,7 +391,7 @@ catch (ApiException<UpdatePetError> ex)
 <dl>
 <dd>
 
-<code>[UpdatePetRequest](Requests/PetApi/UpdatePetRequest.cs)</code>
+<code>[UpdatePetRequest](src/SwaggerPetstoreOpenApi310/Requests/PetApi/UpdatePetRequest.cs)</code>
 
 </dd>
 </dl>
@@ -407,9 +401,9 @@ catch (ApiException<UpdatePetError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[Pet](Models/Pet.cs)</code>
+**OnSuccess**: <code>[Pet](src/SwaggerPetstoreOpenApi310/Models/Pet.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[UpdatePetError](Errors/UpdatePetError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[UpdatePetError](src/SwaggerPetstoreOpenApi310/Errors/UpdatePetError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -443,10 +437,7 @@ Updates a pet resource based on the form data.
 ```csharp
 try
 {
-    var response = await client.PetApi.UpdatePetWithForm(new UpdatePetWithFormRequest
-        {
-            PetId = 10L,
-        });
+    var response = await client.PetApi.UpdatePetWithForm(new UpdatePetWithFormRequest { PetId = 10L });
     // TODO: Handle 'response' of type Pet
 }
 catch (ApiException<UpdatePetWithFormError> ex)
@@ -466,7 +457,7 @@ catch (ApiException<UpdatePetWithFormError> ex)
 <dl>
 <dd>
 
-<code>[UpdatePetWithFormRequest](Requests/PetApi/UpdatePetWithFormRequest.cs)</code>
+<code>[UpdatePetWithFormRequest](src/SwaggerPetstoreOpenApi310/Requests/PetApi/UpdatePetWithFormRequest.cs)</code>
 
 </dd>
 </dl>
@@ -476,9 +467,9 @@ catch (ApiException<UpdatePetWithFormError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[Pet](Models/Pet.cs)</code>
+**OnSuccess**: <code>[Pet](src/SwaggerPetstoreOpenApi310/Models/Pet.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[UpdatePetWithFormError](Errors/UpdatePetWithFormError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[UpdatePetWithFormError](src/SwaggerPetstoreOpenApi310/Errors/UpdatePetWithFormError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -512,10 +503,7 @@ Upload image of the pet.
 ```csharp
 try
 {
-    var response = await client.PetApi.UploadFile(new UploadFileRequest
-        {
-            PetId = 10L,
-        });
+    var response = await client.PetApi.UploadFile(new UploadFileRequest { PetId = 10L });
     // TODO: Handle 'response' of type ApiResponseModel
 }
 catch (ApiException<UploadFileError> ex)
@@ -535,7 +523,7 @@ catch (ApiException<UploadFileError> ex)
 <dl>
 <dd>
 
-<code>[UploadFileRequest](Requests/PetApi/UploadFileRequest.cs)</code>
+<code>[UploadFileRequest](src/SwaggerPetstoreOpenApi310/Requests/PetApi/UploadFileRequest.cs)</code>
 
 </dd>
 </dl>
@@ -545,9 +533,9 @@ catch (ApiException<UploadFileError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ApiResponseModel](Models/ApiResponseModel.cs)</code>
+**OnSuccess**: <code>[ApiResponseModel](src/SwaggerPetstoreOpenApi310/Models/ApiResponseModel.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[UploadFileError](Errors/UploadFileError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[UploadFileError](src/SwaggerPetstoreOpenApi310/Errors/UploadFileError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -559,7 +547,7 @@ catch (ApiException<UploadFileError> ex)
 
 ## Store
 
-> Source: [Store](Api/Store.cs)
+> Source: [Store](src/SwaggerPetstoreOpenApi310/Api/Store.cs)
 
 <details>
 <summary><code>Task DeleteOrder(DeleteOrderRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
@@ -585,10 +573,7 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 ```csharp
 try
 {
-    await client.Store.DeleteOrder(new DeleteOrderRequest
-        {
-            OrderId = 1L,
-        });
+    await client.Store.DeleteOrder(new DeleteOrderRequest { OrderId = 1L });
 }
 catch (ApiException<DeleteOrderError> ex)
 {
@@ -607,7 +592,7 @@ catch (ApiException<DeleteOrderError> ex)
 <dl>
 <dd>
 
-<code>[DeleteOrderRequest](Requests/Store/DeleteOrderRequest.cs)</code>
+<code>[DeleteOrderRequest](src/SwaggerPetstoreOpenApi310/Requests/Store/DeleteOrderRequest.cs)</code>
 
 </dd>
 </dl>
@@ -619,7 +604,7 @@ catch (ApiException<DeleteOrderError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[DeleteOrderError](Errors/DeleteOrderError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[DeleteOrderError](src/SwaggerPetstoreOpenApi310/Errors/DeleteOrderError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -672,7 +657,7 @@ catch (ApiException<RawError> ex)
 
 **OnSuccess**: <code>IReadOnlyDictionary&lt;string, int&gt;</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[RawError](src/SwaggerPetstoreOpenApi310/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -706,10 +691,7 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 ```csharp
 try
 {
-    var response = await client.Store.GetOrderById(new GetOrderByIdRequest
-        {
-            OrderId = 1L,
-        });
+    var response = await client.Store.GetOrderById(new GetOrderByIdRequest { OrderId = 1L });
     // TODO: Handle 'response' of type Order
 }
 catch (ApiException<GetOrderByIdError> ex)
@@ -729,7 +711,7 @@ catch (ApiException<GetOrderByIdError> ex)
 <dl>
 <dd>
 
-<code>[GetOrderByIdRequest](Requests/Store/GetOrderByIdRequest.cs)</code>
+<code>[GetOrderByIdRequest](src/SwaggerPetstoreOpenApi310/Requests/Store/GetOrderByIdRequest.cs)</code>
 
 </dd>
 </dl>
@@ -739,9 +721,9 @@ catch (ApiException<GetOrderByIdError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[Order](Models/Order.cs)</code>
+**OnSuccess**: <code>[Order](src/SwaggerPetstoreOpenApi310/Models/Order.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[GetOrderByIdError](Errors/GetOrderByIdError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[GetOrderByIdError](src/SwaggerPetstoreOpenApi310/Errors/GetOrderByIdError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -775,12 +757,7 @@ Place a new order in the store.
 ```csharp
 try
 {
-    var response = await client.Store.PlaceOrder(new PlaceOrderRequest
-        {
-            Id = 10L,
-            PetId = 198772L,
-            Quantity = 7,
-        });
+    var response = await client.Store.PlaceOrder(new PlaceOrderRequest { Id = 10L, PetId = 198772L, Quantity = 7 });
     // TODO: Handle 'response' of type Order
 }
 catch (ApiException<PlaceOrderError> ex)
@@ -800,7 +777,7 @@ catch (ApiException<PlaceOrderError> ex)
 <dl>
 <dd>
 
-<code>[PlaceOrderRequest](Requests/Store/PlaceOrderRequest.cs)</code>
+<code>[PlaceOrderRequest](src/SwaggerPetstoreOpenApi310/Requests/Store/PlaceOrderRequest.cs)</code>
 
 </dd>
 </dl>
@@ -810,9 +787,9 @@ catch (ApiException<PlaceOrderError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[Order](Models/Order.cs)</code>
+**OnSuccess**: <code>[Order](src/SwaggerPetstoreOpenApi310/Models/Order.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[PlaceOrderError](Errors/PlaceOrderError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[PlaceOrderError](src/SwaggerPetstoreOpenApi310/Errors/PlaceOrderError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -824,7 +801,7 @@ catch (ApiException<PlaceOrderError> ex)
 
 ## UserApi
 
-> Source: [UserApi](Api/UserApi.cs)
+> Source: [UserApi](src/SwaggerPetstoreOpenApi310/Api/UserApi.cs)
 
 <details>
 <summary><code>Task&lt;User&gt; CreateUser(CreateUserRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
@@ -851,16 +828,16 @@ This can only be done by the logged in user.
 try
 {
     var response = await client.UserApi.CreateUser(new CreateUserRequest
-        {
-            Id = 10L,
-            Username = "theUser",
-            FirstName = "John",
-            LastName = "James",
-            Email = "john@email.com",
-            Password = "12345",
-            Phone = "12345",
-            UserStatus = 1,
-        });
+    {
+        Id = 10L,
+        Username = "theUser",
+        FirstName = "John",
+        LastName = "James",
+        Email = "john@email.com",
+        Password = "12345",
+        Phone = "12345",
+        UserStatus = 1,
+    });
     // TODO: Handle 'response' of type User
 }
 catch (ApiException<RawError> ex)
@@ -877,7 +854,7 @@ catch (ApiException<RawError> ex)
 <dl>
 <dd>
 
-<code>[CreateUserRequest](Requests/UserApi/CreateUserRequest.cs)</code>
+<code>[CreateUserRequest](src/SwaggerPetstoreOpenApi310/Requests/UserApi/CreateUserRequest.cs)</code>
 
 </dd>
 </dl>
@@ -887,9 +864,9 @@ catch (ApiException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[User](Models/User.cs)</code>
+**OnSuccess**: <code>[User](src/SwaggerPetstoreOpenApi310/Models/User.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[RawError](src/SwaggerPetstoreOpenApi310/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -940,7 +917,7 @@ catch (ApiException<RawError> ex)
 <dl>
 <dd>
 
-<code>[CreateUsersWithListInputRequest](Requests/UserApi/CreateUsersWithListInputRequest.cs)</code>
+<code>[CreateUsersWithListInputRequest](src/SwaggerPetstoreOpenApi310/Requests/UserApi/CreateUsersWithListInputRequest.cs)</code>
 
 </dd>
 </dl>
@@ -950,9 +927,9 @@ catch (ApiException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[User](Models/User.cs)</code>
+**OnSuccess**: <code>[User](src/SwaggerPetstoreOpenApi310/Models/User.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[RawError](src/SwaggerPetstoreOpenApi310/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -986,10 +963,7 @@ This can only be done by the logged in user.
 ```csharp
 try
 {
-    await client.UserApi.DeleteUser(new DeleteUserRequest
-        {
-            Usersname = "some example string",
-        });
+    await client.UserApi.DeleteUser(new DeleteUserRequest { CurrentUsername = "some example string" });
 }
 catch (ApiException<DeleteUserError> ex)
 {
@@ -1008,7 +982,7 @@ catch (ApiException<DeleteUserError> ex)
 <dl>
 <dd>
 
-<code>[DeleteUserRequest](Requests/UserApi/DeleteUserRequest.cs)</code>
+<code>[DeleteUserRequest](src/SwaggerPetstoreOpenApi310/Requests/UserApi/DeleteUserRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1020,7 +994,7 @@ catch (ApiException<DeleteUserError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[DeleteUserError](Errors/DeleteUserError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[DeleteUserError](src/SwaggerPetstoreOpenApi310/Errors/DeleteUserError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1055,9 +1029,9 @@ Get user detail based on username.
 try
 {
     var response = await client.UserApi.GetUserByName(new GetUserByNameRequest
-        {
-            Usersname = "some example string",
-        });
+    {
+        CurrentUsername = "some example string",
+    });
     // TODO: Handle 'response' of type User
 }
 catch (ApiException<GetUserByNameError> ex)
@@ -1077,7 +1051,7 @@ catch (ApiException<GetUserByNameError> ex)
 <dl>
 <dd>
 
-<code>[GetUserByNameRequest](Requests/UserApi/GetUserByNameRequest.cs)</code>
+<code>[GetUserByNameRequest](src/SwaggerPetstoreOpenApi310/Requests/UserApi/GetUserByNameRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1087,9 +1061,9 @@ catch (ApiException<GetUserByNameError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[User](Models/User.cs)</code>
+**OnSuccess**: <code>[User](src/SwaggerPetstoreOpenApi310/Models/User.cs)</code>
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[GetUserByNameError](Errors/GetUserByNameError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[GetUserByNameError](src/SwaggerPetstoreOpenApi310/Errors/GetUserByNameError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1142,7 +1116,7 @@ catch (ApiException<LoginUserError> ex)
 <dl>
 <dd>
 
-<code>[LoginUserRequest](Requests/UserApi/LoginUserRequest.cs)</code>
+<code>[LoginUserRequest](src/SwaggerPetstoreOpenApi310/Requests/UserApi/LoginUserRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1154,7 +1128,7 @@ catch (ApiException<LoginUserError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[LoginUserError](Errors/LoginUserError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[LoginUserError](src/SwaggerPetstoreOpenApi310/Errors/LoginUserError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1206,7 +1180,7 @@ catch (ApiException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[RawError](src/SwaggerPetstoreOpenApi310/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1241,17 +1215,17 @@ This can only be done by the logged in user.
 try
 {
     await client.UserApi.UpdateUser(new UpdateUserRequest
-        {
-            Usersname = "some example string",
-            Id = 10L,
-            Username = "theUser",
-            FirstName = "John",
-            LastName = "James",
-            Email = "john@email.com",
-            Password = "12345",
-            Phone = "12345",
-            UserStatus = 1,
-        });
+    {
+        CurrentUsername = "some example string",
+        Id = 10L,
+        Username = "theUser",
+        FirstName = "John",
+        LastName = "James",
+        Email = "john@email.com",
+        Password = "12345",
+        Phone = "12345",
+        UserStatus = 1,
+    });
 }
 catch (ApiException<UpdateUserError> ex)
 {
@@ -1270,7 +1244,7 @@ catch (ApiException<UpdateUserError> ex)
 <dl>
 <dd>
 
-<code>[UpdateUserRequest](Requests/UserApi/UpdateUserRequest.cs)</code>
+<code>[UpdateUserRequest](src/SwaggerPetstoreOpenApi310/Requests/UserApi/UpdateUserRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1282,7 +1256,7 @@ catch (ApiException<UpdateUserError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[ApiException](Core/Exceptions/ApiException.cs)&lt;[UpdateUserError](Errors/UpdateUserError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs)&lt;[UpdateUserError](src/SwaggerPetstoreOpenApi310/Errors/UpdateUserError.cs)&gt;</code>
 
 </dd>
 </dl>

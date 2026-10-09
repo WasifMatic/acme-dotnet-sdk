@@ -2,7 +2,7 @@
 
 # PetApi — operations
 
-Accessor: `client.PetApi` · Source: `Api/PetApi.cs` · 8 operations
+Accessor: `client.PetApi` · Source: `src/SwaggerPetstoreOpenApi310/Api/PetApi.cs` · 8 operations
 
 **Type sources**: the file declaring each type an operation names (`RawError` excluded — see sdk-map.md).
 
@@ -17,12 +17,12 @@ Accessor: `client.PetApi` · Source: `Api/PetApi.cs` · 8 operations
 
 | Type | Source |
 | --- | --- |
-| `AddPetRequest` | `Requests/PetApi/AddPetRequest.cs` |
-| `Category` | `Models/Category.cs` |
-| `Tag` | `Models/Tag.cs` |
-| `PetStatus` | `Models/Enums/PetStatus.cs` |
-| `Pet` | `Models/Pet.cs` |
-| `AddPetError` | `Errors/AddPetError.cs` |
+| `AddPetRequest` | `src/SwaggerPetstoreOpenApi310/Requests/PetApi/AddPetRequest.cs` |
+| `Category` | `src/SwaggerPetstoreOpenApi310/Models/Category.cs` |
+| `Tag` | `src/SwaggerPetstoreOpenApi310/Models/Tag.cs` |
+| `PetStatus` | `src/SwaggerPetstoreOpenApi310/Models/Enums/PetStatus.cs` |
+| `Pet` | `src/SwaggerPetstoreOpenApi310/Models/Pet.cs` |
+| `AddPetError` | `src/SwaggerPetstoreOpenApi310/Errors/AddPetError.cs` |
 
 ### DeletePet
 
@@ -35,8 +35,8 @@ Accessor: `client.PetApi` · Source: `Api/PetApi.cs` · 8 operations
 
 | Type | Source |
 | --- | --- |
-| `DeletePetRequest` | `Requests/PetApi/DeletePetRequest.cs` |
-| `DeletePetError` | `Errors/DeletePetError.cs` |
+| `DeletePetRequest` | `src/SwaggerPetstoreOpenApi310/Requests/PetApi/DeletePetRequest.cs` |
+| `DeletePetError` | `src/SwaggerPetstoreOpenApi310/Errors/DeletePetError.cs` |
 
 ### FindPetsByStatus
 
@@ -49,10 +49,10 @@ Accessor: `client.PetApi` · Source: `Api/PetApi.cs` · 8 operations
 
 | Type | Source |
 | --- | --- |
-| `FindPetsByStatusRequest` | `Requests/PetApi/FindPetsByStatusRequest.cs` |
-| `PetStatus` | `Models/Enums/PetStatus.cs` |
-| `Pet` | `Models/Pet.cs` |
-| `FindPetsByStatusError` | `Errors/FindPetsByStatusError.cs` |
+| `FindPetsByStatusRequest` | `src/SwaggerPetstoreOpenApi310/Requests/PetApi/FindPetsByStatusRequest.cs` |
+| `PetStatus` | `src/SwaggerPetstoreOpenApi310/Models/Enums/PetStatus.cs` |
+| `Pet` | `src/SwaggerPetstoreOpenApi310/Models/Pet.cs` |
+| `FindPetsByStatusError` | `src/SwaggerPetstoreOpenApi310/Errors/FindPetsByStatusError.cs` |
 
 ### FindPetsByTags
 
@@ -65,9 +65,9 @@ Accessor: `client.PetApi` · Source: `Api/PetApi.cs` · 8 operations
 
 | Type | Source |
 | --- | --- |
-| `FindPetsByTagsRequest` | `Requests/PetApi/FindPetsByTagsRequest.cs` |
-| `Pet` | `Models/Pet.cs` |
-| `FindPetsByTagsError` | `Errors/FindPetsByTagsError.cs` |
+| `FindPetsByTagsRequest` | `src/SwaggerPetstoreOpenApi310/Requests/PetApi/FindPetsByTagsRequest.cs` |
+| `Pet` | `src/SwaggerPetstoreOpenApi310/Models/Pet.cs` |
+| `FindPetsByTagsError` | `src/SwaggerPetstoreOpenApi310/Errors/FindPetsByTagsError.cs` |
 
 ### GetPetById
 
@@ -80,9 +80,9 @@ Accessor: `client.PetApi` · Source: `Api/PetApi.cs` · 8 operations
 
 | Type | Source |
 | --- | --- |
-| `GetPetByIdRequest` | `Requests/PetApi/GetPetByIdRequest.cs` |
-| `Pet` | `Models/Pet.cs` |
-| `GetPetByIdError` | `Errors/GetPetByIdError.cs` |
+| `GetPetByIdRequest` | `src/SwaggerPetstoreOpenApi310/Requests/PetApi/GetPetByIdRequest.cs` |
+| `Pet` | `src/SwaggerPetstoreOpenApi310/Models/Pet.cs` |
+| `GetPetByIdError` | `src/SwaggerPetstoreOpenApi310/Errors/GetPetByIdError.cs` |
 
 ### UpdatePet
 
@@ -95,12 +95,12 @@ Accessor: `client.PetApi` · Source: `Api/PetApi.cs` · 8 operations
 
 | Type | Source |
 | --- | --- |
-| `UpdatePetRequest` | `Requests/PetApi/UpdatePetRequest.cs` |
-| `Category` | `Models/Category.cs` |
-| `Tag` | `Models/Tag.cs` |
-| `PetStatus` | `Models/Enums/PetStatus.cs` |
-| `Pet` | `Models/Pet.cs` |
-| `UpdatePetError` | `Errors/UpdatePetError.cs` |
+| `UpdatePetRequest` | `src/SwaggerPetstoreOpenApi310/Requests/PetApi/UpdatePetRequest.cs` |
+| `Category` | `src/SwaggerPetstoreOpenApi310/Models/Category.cs` |
+| `Tag` | `src/SwaggerPetstoreOpenApi310/Models/Tag.cs` |
+| `PetStatus` | `src/SwaggerPetstoreOpenApi310/Models/Enums/PetStatus.cs` |
+| `Pet` | `src/SwaggerPetstoreOpenApi310/Models/Pet.cs` |
+| `UpdatePetError` | `src/SwaggerPetstoreOpenApi310/Errors/UpdatePetError.cs` |
 
 ### UpdatePetWithForm
 
@@ -114,9 +114,9 @@ Accessor: `client.PetApi` · Source: `Api/PetApi.cs` · 8 operations
 
 | Type | Source |
 | --- | --- |
-| `UpdatePetWithFormRequest` | `Requests/PetApi/UpdatePetWithFormRequest.cs` |
-| `Pet` | `Models/Pet.cs` |
-| `UpdatePetWithFormError` | `Errors/UpdatePetWithFormError.cs` |
+| `UpdatePetWithFormRequest` | `src/SwaggerPetstoreOpenApi310/Requests/PetApi/UpdatePetWithFormRequest.cs` |
+| `Pet` | `src/SwaggerPetstoreOpenApi310/Models/Pet.cs` |
+| `UpdatePetWithFormError` | `src/SwaggerPetstoreOpenApi310/Errors/UpdatePetWithFormError.cs` |
 
 ### UploadFile
 
@@ -130,7 +130,7 @@ Accessor: `client.PetApi` · Source: `Api/PetApi.cs` · 8 operations
 
 | Type | Source |
 | --- | --- |
-| `UploadFileRequest` | `Requests/PetApi/UploadFileRequest.cs` |
-| `ApiResponseModel` | `Models/ApiResponseModel.cs` |
-| `UploadFileError` | `Errors/UploadFileError.cs` |
+| `UploadFileRequest` | `src/SwaggerPetstoreOpenApi310/Requests/PetApi/UploadFileRequest.cs` |
+| `ApiResponseModel` | `src/SwaggerPetstoreOpenApi310/Models/ApiResponseModel.cs` |
+| `UploadFileError` | `src/SwaggerPetstoreOpenApi310/Errors/UploadFileError.cs` |
 

@@ -2,7 +2,7 @@
 
 # Store — operations
 
-Accessor: `client.Store` · Source: `Api/Store.cs` · 4 operations
+Accessor: `client.Store` · Source: `src/SwaggerPetstoreOpenApi310/Api/Store.cs` · 4 operations
 
 **Type sources**: the file declaring each type an operation names (`RawError` excluded — see sdk-map.md).
 
@@ -16,8 +16,8 @@ Accessor: `client.Store` · Source: `Api/Store.cs` · 4 operations
 
 | Type | Source |
 | --- | --- |
-| `DeleteOrderRequest` | `Requests/Store/DeleteOrderRequest.cs` |
-| `DeleteOrderError` | `Errors/DeleteOrderError.cs` |
+| `DeleteOrderRequest` | `src/SwaggerPetstoreOpenApi310/Requests/Store/DeleteOrderRequest.cs` |
+| `DeleteOrderError` | `src/SwaggerPetstoreOpenApi310/Errors/DeleteOrderError.cs` |
 
 ### GetInventory
 
@@ -36,9 +36,9 @@ Accessor: `client.Store` · Source: `Api/Store.cs` · 4 operations
 
 | Type | Source |
 | --- | --- |
-| `GetOrderByIdRequest` | `Requests/Store/GetOrderByIdRequest.cs` |
-| `Order` | `Models/Order.cs` |
-| `GetOrderByIdError` | `Errors/GetOrderByIdError.cs` |
+| `GetOrderByIdRequest` | `src/SwaggerPetstoreOpenApi310/Requests/Store/GetOrderByIdRequest.cs` |
+| `Order` | `src/SwaggerPetstoreOpenApi310/Models/Order.cs` |
+| `GetOrderByIdError` | `src/SwaggerPetstoreOpenApi310/Errors/GetOrderByIdError.cs` |
 
 ### PlaceOrder
 
@@ -49,8 +49,8 @@ Accessor: `client.Store` · Source: `Api/Store.cs` · 4 operations
 
 | Type | Source |
 | --- | --- |
-| `PlaceOrderRequest` | `Requests/Store/PlaceOrderRequest.cs` |
-| `OrderStatus` | `Models/Enums/OrderStatus.cs` |
-| `Order` | `Models/Order.cs` |
-| `PlaceOrderError` | `Errors/PlaceOrderError.cs` |
+| `PlaceOrderRequest` | `src/SwaggerPetstoreOpenApi310/Requests/Store/PlaceOrderRequest.cs` |
+| `OrderStatus` | `src/SwaggerPetstoreOpenApi310/Models/Enums/OrderStatus.cs` |
+| `Order` | `src/SwaggerPetstoreOpenApi310/Models/Order.cs` |
+| `PlaceOrderError` | `src/SwaggerPetstoreOpenApi310/Errors/PlaceOrderError.cs` |
 

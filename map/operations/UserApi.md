@@ -2,7 +2,7 @@
 
 # UserApi — operations
 
-Accessor: `client.UserApi` · Source: `Api/UserApi.cs` · 7 operations
+Accessor: `client.UserApi` · Source: `src/SwaggerPetstoreOpenApi310/Api/UserApi.cs` · 7 operations
 
 **Type sources**: the file declaring each type an operation names (`RawError` excluded — see sdk-map.md).
 
@@ -14,8 +14,8 @@ Accessor: `client.UserApi` · Source: `Api/UserApi.cs` · 7 operations
 
 | Type | Source |
 | --- | --- |
-| `CreateUserRequest` | `Requests/UserApi/CreateUserRequest.cs` |
-| `User` | `Models/User.cs` |
+| `CreateUserRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/CreateUserRequest.cs` |
+| `User` | `src/SwaggerPetstoreOpenApi310/Models/User.cs` |
 
 ### CreateUsersWithListInput
 
@@ -25,35 +25,35 @@ Accessor: `client.UserApi` · Source: `Api/UserApi.cs` · 7 operations
 
 | Type | Source |
 | --- | --- |
-| `CreateUsersWithListInputRequest` | `Requests/UserApi/CreateUsersWithListInputRequest.cs` |
-| `User` | `Models/User.cs` |
+| `CreateUsersWithListInputRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/CreateUsersWithListInputRequest.cs` |
+| `User` | `src/SwaggerPetstoreOpenApi310/Models/User.cs` |
 
 ### DeleteUser
 
 - **Signature**: `DeleteUser(DeleteUserRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
-  - required: `Usersname`
+  - required: `CurrentUsername`
 - **Returns**: `void` (Task)
 - **Error**: `ApiException<DeleteUserError>` — **Case A (typed)**
 - **Error accessors**: `TryGetNoContent(out RawError)` [400, 404] · `TryGetRawError(out RawError)` [fallback]
 
 | Type | Source |
 | --- | --- |
-| `DeleteUserRequest` | `Requests/UserApi/DeleteUserRequest.cs` |
-| `DeleteUserError` | `Errors/DeleteUserError.cs` |
+| `DeleteUserRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/DeleteUserRequest.cs` |
+| `DeleteUserError` | `src/SwaggerPetstoreOpenApi310/Errors/DeleteUserError.cs` |
 
 ### GetUserByName
 
 - **Signature**: `GetUserByName(GetUserByNameRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
-  - required: `Usersname`
+  - required: `CurrentUsername`
 - **Returns**: `User`
 - **Error**: `ApiException<GetUserByNameError>` — **Case A (typed)**
 - **Error accessors**: `TryGetNoContent(out RawError)` [400, 404] · `TryGetRawError(out RawError)` [fallback]
 
 | Type | Source |
 | --- | --- |
-| `GetUserByNameRequest` | `Requests/UserApi/GetUserByNameRequest.cs` |
-| `User` | `Models/User.cs` |
-| `GetUserByNameError` | `Errors/GetUserByNameError.cs` |
+| `GetUserByNameRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/GetUserByNameRequest.cs` |
+| `User` | `src/SwaggerPetstoreOpenApi310/Models/User.cs` |
+| `GetUserByNameError` | `src/SwaggerPetstoreOpenApi310/Errors/GetUserByNameError.cs` |
 
 ### LoginUser
 
@@ -65,8 +65,8 @@ Accessor: `client.UserApi` · Source: `Api/UserApi.cs` · 7 operations
 
 | Type | Source |
 | --- | --- |
-| `LoginUserRequest` | `Requests/UserApi/LoginUserRequest.cs` |
-| `LoginUserError` | `Errors/LoginUserError.cs` |
+| `LoginUserRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/LoginUserRequest.cs` |
+| `LoginUserError` | `src/SwaggerPetstoreOpenApi310/Errors/LoginUserError.cs` |
 
 ### LogoutUser
 
@@ -77,13 +77,13 @@ Accessor: `client.UserApi` · Source: `Api/UserApi.cs` · 7 operations
 ### UpdateUser
 
 - **Signature**: `UpdateUser(UpdateUserRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
-  - required: `Usersname`
+  - required: `CurrentUsername`
 - **Returns**: `void` (Task)
 - **Error**: `ApiException<UpdateUserError>` — **Case A (typed)**
 - **Error accessors**: `TryGetNoContent(out RawError)` [400, 404] · `TryGetRawError(out RawError)` [fallback]
 
 | Type | Source |
 | --- | --- |
-| `UpdateUserRequest` | `Requests/UserApi/UpdateUserRequest.cs` |
-| `UpdateUserError` | `Errors/UpdateUserError.cs` |
+| `UpdateUserRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/UpdateUserRequest.cs` |
+| `UpdateUserError` | `src/SwaggerPetstoreOpenApi310/Errors/UpdateUserError.cs` |
 
