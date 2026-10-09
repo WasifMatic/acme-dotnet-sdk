@@ -20,11 +20,11 @@ Find out more about Swagger: [https://swagger.io](https://swagger.io)
 If you are building with .NET CLI tools then you can also use the following command:
 
 ```bash
-dotnet add package cliV1 --version 0.1.8
+dotnet add package cliV1 --version 0.1.9
 ```
 
 You can also view the package at:
-https://www.nuget.org/packages/cliV1/0.1.8
+https://www.nuget.org/packages/cliV1/0.1.9
 
 ## Test the SDK
 
