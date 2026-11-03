@@ -1,20 +1,20 @@
 <!-- Generated file — do not edit; regenerated with the SDK. -->
 
-# SDK map — Swagger Petstore - OpenAPI 3.1.0 (.NET)
+# SDK map — Swagger Petstore - OpenAPI 3.10.0 (.NET)
 
 > A generated table of contents for this SDK. Consult this map and its sub-pages to learn signatures, error types, and server/auth wiring **by lookup**. Model shapes and enum values are *not* duplicated here — the map names the file declaring each type; read the shape there. The compiler is the backstop: a wrong name fails to build.
 
 |  |  |
 | --- | --- |
-| SDK display name | Swagger Petstore - OpenAPI 3.1.0 |
-| Root namespace | `SwaggerPetstoreOpenApi310` |
+| SDK display name | Swagger Petstore - OpenAPI 3.10.0 |
+| Root namespace | `SwaggerPetstoreOpenApi3100` |
 | Target framework | `netstandard2.0` (C# `LangVersion 14`, `Nullable enable`) |
 | API spec version | `1.0.26` |
 | Generator | APIMatic |
 
 Staleness check: the API spec version above changes when the SDK is regenerated from a new spec. If a lookup here fails to compile, trust the compiler and re-read the source file named in the row.
 
-All `Source` paths on this map and its sub-pages are relative to the **SDK root** — the directory holding this file — never to the page that carries them; the project file is `src/SwaggerPetstoreOpenApi310/SwaggerPetstoreOpenApi310.csproj`. Open them as-is from the SDK root, from any page; if the SDK sits under a subdirectory of a larger repo, prefix that subdirectory.
+All `Source` paths on this map and its sub-pages are relative to the **SDK root** — the directory holding this file — never to the page that carries them; the project file is `src/SwaggerPetstoreOpenApi3100/SwaggerPetstoreOpenApi3100.csproj`. Open them as-is from the SDK root, from any page; if the SDK sits under a subdirectory of a larger repo, prefix that subdirectory.
 
 ---
 
@@ -23,19 +23,19 @@ All `Source` paths on this map and its sub-pages are relative to the **SDK root*
 ```csharp
 var httpClient = new HttpClient();
 // TODO: configure more client options here
-var options = new SwaggerPetstoreOpenApi310ClientOptions
+var options = new SwaggerPetstoreOpenApi3100ClientOptions
 {
     PetstoreAuth = "YOUR_API_KEY",
     ApiKey = "YOUR_API_KEY",
     Environment = ServerEnvironment.Production,
 };
-var client = new SwaggerPetstoreOpenApi310Client(httpClient, options);
+var client = new SwaggerPetstoreOpenApi3100Client(httpClient, options);
 ```
 
-DI alternative (`services.AddSwaggerPetstoreOpenApi310Client`):
+DI alternative (`services.AddSwaggerPetstoreOpenApi3100Client`):
 
 ```csharp
-services.AddSwaggerPetstoreOpenApi310Client(options =>
+services.AddSwaggerPetstoreOpenApi3100Client(options =>
 {
     options.PetstoreAuth = "YOUR_API_KEY";
     options.ApiKey = "YOUR_API_KEY";
@@ -44,9 +44,9 @@ services.AddSwaggerPetstoreOpenApi310Client(options =>
 });
 ```
 
-Every API group is a property on the client (e.g. `client.PetApi`). Source: `src/SwaggerPetstoreOpenApi310/SwaggerPetstoreOpenApi310Client.cs`. The only constructor is `SwaggerPetstoreOpenApi310Client(HttpClient httpClient, SwaggerPetstoreOpenApi310ClientOptions options)`.
+Every API group is a property on the client (e.g. `client.PetApi`). Source: `src/SwaggerPetstoreOpenApi3100/SwaggerPetstoreOpenApi3100Client.cs`. The only constructor is `SwaggerPetstoreOpenApi3100Client(HttpClient httpClient, SwaggerPetstoreOpenApi3100ClientOptions options)`.
 
-All `SwaggerPetstoreOpenApi310ClientOptions` properties (source: `src/SwaggerPetstoreOpenApi310/SwaggerPetstoreOpenApi310ClientOptions.cs`):
+All `SwaggerPetstoreOpenApi3100ClientOptions` properties (source: `src/SwaggerPetstoreOpenApi3100/SwaggerPetstoreOpenApi3100ClientOptions.cs`):
 
 | Property | Type |
 | --- | --- |
@@ -58,11 +58,13 @@ All `SwaggerPetstoreOpenApi310ClientOptions` properties (source: `src/SwaggerPet
 | `StreamReadTimeout` | `TimeSpan?` |
 | `Hooks` | `IReadOnlyList<SdkHook>` |
 | `PetstoreAuth` | `string?` |
+| `PetstoreAuthProvider` | `CredentialProvider<string>?` |
 | `ApiKey` | `string?` |
+| `ApiKeyProvider` | `CredentialProvider<string>?` |
 
-`ServerEnvironment` (source: `src/SwaggerPetstoreOpenApi310/Servers/ServerEnvironment.cs`, namespace `SwaggerPetstoreOpenApi310.Servers`)
+`ServerEnvironment` (source: `src/SwaggerPetstoreOpenApi3100/Servers/ServerEnvironment.cs`, namespace `SwaggerPetstoreOpenApi3100.Servers`)
 
-`RetryOptions` members (namespace `SwaggerPetstoreOpenApi310.Core.Configuration` — add `using SwaggerPetstoreOpenApi310.Core.Configuration;`; source: `src/SwaggerPetstoreOpenApi310/Core/Configuration/RetryOptions.cs`; all members are `required`, so build a full instance or start from `RetryOptions.Default()`):
+`RetryOptions` members (namespace `SwaggerPetstoreOpenApi3100.Core.Configuration` — add `using SwaggerPetstoreOpenApi3100.Core.Configuration;`; source: `src/SwaggerPetstoreOpenApi3100/Core/Configuration/RetryOptions.cs`; all members are `required`, so build a full instance or start from `RetryOptions.Default()`):
 
 | Member | Type |
 | --- | --- |
@@ -80,21 +82,21 @@ All `SwaggerPetstoreOpenApi310ClientOptions` properties (source: `src/SwaggerPet
 
 ## Error-handling model (read once — applies to every operation)
 
-Operations are **throw-based**. On an error status the SDK throws `ApiException<TError>` (`src/SwaggerPetstoreOpenApi310/Core/Exceptions/ApiException.cs`, namespace `SwaggerPetstoreOpenApi310.Core.Exceptions`) exposing `.Error` of type `TError` beside the `StatusCode`, `Headers` and `ContentType` of the response. There are two cases:
+Operations are **throw-based**. On an error status the SDK throws `ApiException<TError>` (`src/SwaggerPetstoreOpenApi3100/Core/Exceptions/ApiException.cs`, namespace `SwaggerPetstoreOpenApi3100.Core.Exceptions`) exposing `.Error` of type `TError` beside the `StatusCode`, `Headers` and `ContentType` of the response. There are two cases:
 
-- **Case A — typed error.** `TError` is a generated `…Error : ApiError` class (namespace `SwaggerPetstoreOpenApi310.Errors`) with status-specific `TryGet…(out …)` accessors (each returns `true` when that shape is present) plus the inherited `TryGetRawError(out RawError)` fallback. The operation blocks name the exact `TryGet…` methods and the HTTP status each maps to.
-- **Case B — raw error.** `TError` is `RawError` (`src/SwaggerPetstoreOpenApi310/Core/ErrorResponse/RawError.cs`, namespace `SwaggerPetstoreOpenApi310.Core.ErrorResponse`): `StatusCode: HttpStatusCode` · `ReadAsBytes(): ReadOnlyMemory<byte>` · `ReadAsString(): string` · `ReadAsJson<T>(): T?`.
+- **Case A — typed error.** `TError` is a generated `…Error : ApiError` class (namespace `SwaggerPetstoreOpenApi3100.Errors`) with status-specific `TryGet…(out …)` accessors (each returns `true` when that shape is present) plus the inherited `TryGetRawError(out RawError)` fallback. The operation blocks name the exact `TryGet…` methods and the HTTP status each maps to.
+- **Case B — raw error.** `TError` is `RawError` (`src/SwaggerPetstoreOpenApi3100/Core/ErrorResponse/RawError.cs`, namespace `SwaggerPetstoreOpenApi3100.Core.ErrorResponse`): `StatusCode: HttpStatusCode` · `ReadAsBytes(): ReadOnlyMemory<byte>` · `ReadAsString(): string` · `ReadAsJson<T>(): T?`.
 
-⚠ Each of the three lives in its own namespace. `src/SwaggerPetstoreOpenApi310/Core/` holds several namespaces, so a catch block naming `ApiException<T>`, a typed `{Operation}Error` and `RawError` together needs a `using` for each.
+⚠ Each of the three lives in its own namespace. `src/SwaggerPetstoreOpenApi3100/Core/` holds several namespaces, so a catch block naming `ApiException<T>`, a typed `{Operation}Error` and `RawError` together needs a `using` for each.
 
-`ApiException<TError>` is one leaf of the `SdkException` family (`src/SwaggerPetstoreOpenApi310/Core/Exceptions/SdkException.cs`): a request that produced no usable response surfaces as `SdkConnectionException` or `SdkTimeoutException`, a body that does not match its declared type as `ResponseDeserializationException`, and a credential that could not be applied as `AuthSchemeException`. Every one of them names the failed call. The full table is in [README → Error Handling](README.md#error-handling).
+`ApiException<TError>` is one leaf of the `SdkException` family (`src/SwaggerPetstoreOpenApi3100/Core/Exceptions/SdkException.cs`): a request that produced no usable response surfaces as `SdkConnectionException` or `SdkTimeoutException`, a body that does not match its declared type as `ResponseDeserializationException`, and a required credential that is not configured, or one that could not be applied, as `AuthSchemeException`. Every one of them names the failed call. The full table is in [README → Error Handling](README.md#error-handling).
 
-Core error types (`src/SwaggerPetstoreOpenApi310/Core/ErrorResponse/`) — public members with their **declared types**, verbatim from source:
+Core error types (`src/SwaggerPetstoreOpenApi3100/Core/ErrorResponse/`) — public members with their **declared types**, verbatim from source:
 
 | Type | Public members | Source |
 | --- | --- | --- |
-| `ApiError` — abstract base of the 15 typed error classes in `src/SwaggerPetstoreOpenApi310/Errors/` | `TryGetRawError(out RawError error): bool` | `src/SwaggerPetstoreOpenApi310/Core/ErrorResponse/ApiError.cs` |
-| `RawError` | `StatusCode: HttpStatusCode` · `ReadAsBytes(): ReadOnlyMemory<byte>` · `ReadAsString(): string` · `ReadAsJson<T>(): T?` | `src/SwaggerPetstoreOpenApi310/Core/ErrorResponse/RawError.cs` |
+| `ApiError` — abstract base of the 15 typed error classes in `src/SwaggerPetstoreOpenApi3100/Errors/` | `TryGetRawError(out RawError error): bool` | `src/SwaggerPetstoreOpenApi3100/Core/ErrorResponse/ApiError.cs` |
+| `RawError` | `StatusCode: HttpStatusCode` · `ReadAsBytes(): ReadOnlyMemory<byte>` · `ReadAsString(): string` · `ReadAsJson<T>(): T?` | `src/SwaggerPetstoreOpenApi3100/Core/ErrorResponse/RawError.cs` |
 
 Typed-error payload shapes (the `out` types in each operation page's error-accessor cells) are ordinary records/unions — no special handling. The operation's **Type sources** table gives the file that declares each one; read field names, declared types, and JSON wire names there, as for any other model.
 
@@ -127,11 +129,11 @@ catch (ApiException<RawError> ex)
 }
 ```
 
-**No-throw (`…Result`) variants: absent across this SDK** — every operation is throw-only. Of **19 operations**, **15 are Case A (typed)** and **4 are Case B (raw)**.
+**No-throw (`…Result`) variants: absent across this SDK** — every operation is throw-only. Of **22 operations**, **15 are Case A (typed)** and **7 are Case B (raw)**.
 
 ---
 
-## Operations — by controller (3 groups, 19 operations)
+## Operations — by controller (3 groups, 22 operations)
 
 Each links to a sub-page with one row per operation: signature, the request record's required members, query-param wire names, return type, error Case A/B, and Case A's typed accessors with their statuses. Each operation also carries a **Type sources** table — every type it names, with the file that declares it — so resolving a body, return, or error payload to its source is a lookup, never a search. `RawError` is excluded there (its members and path are above); an operation with no table names nothing but primitives and `RawError`.
 
@@ -152,21 +154,21 @@ Each links to a sub-page with one row per operation: signature, the request reco
 | Controller (`client.X`) | Ops | Page |
 | --- | --- | --- |
 | `PetApi` | 8 | [map/operations/PetApi.md](map/operations/PetApi.md) |
-| `Store` | 4 | [map/operations/Store.md](map/operations/Store.md) |
+| `Store` | 7 | [map/operations/Store.md](map/operations/Store.md) |
 | `UserApi` | 7 | [map/operations/UserApi.md](map/operations/UserApi.md) |
 
 ---
 
 ## Models — where they live, how to build them
 
-**Shapes live only in the source.** Every file under `src/SwaggerPetstoreOpenApi310/Models/`, `src/SwaggerPetstoreOpenApi310/Errors/` and `src/SwaggerPetstoreOpenApi310/Requests/` declares exactly one public type, named after the file, and no two share a name — so a type name *is* its path. Take it from the operation's **Type sources** table, or build it from the kind's directory below. Never grep for a type.
+**Shapes live only in the source.** Every file under `src/SwaggerPetstoreOpenApi3100/Models/`, `src/SwaggerPetstoreOpenApi3100/Errors/` and `src/SwaggerPetstoreOpenApi3100/Requests/` declares exactly one public type, named after the file, and no two share a name — so a type name *is* its path. Take it from the operation's **Type sources** table, or build it from the kind's directory below. Never grep for a type.
 
 | Group | Count | Directory (file = `<TypeName>.cs`) |
 | --- | --- | --- |
-| Records (plain `record` data models) | 6 | `src/SwaggerPetstoreOpenApi310/Models/` |
-| Enums (`OpenStringEnum<T>` / `OpenIntEnum<T>`) — C# member names + wire values | 2 | `src/SwaggerPetstoreOpenApi310/Models/Enums/` |
-| Typed error classes (`: ApiError`, one per Case A operation) | 15 | `src/SwaggerPetstoreOpenApi310/Errors/` |
-| Request records (one per operation that takes input; never serialized) | 17 | `src/SwaggerPetstoreOpenApi310/Requests/` — a controller's records sit in a folder named after it (an operation with several tags is filed under the first tag it declares) |
+| Records (plain `record` data models) | 8 | `src/SwaggerPetstoreOpenApi3100/Models/` |
+| Enums (`OpenStringEnum<T>` / `OpenIntEnum<T>`) — C# member names + wire values | 2 | `src/SwaggerPetstoreOpenApi3100/Models/Enums/` |
+| Typed error classes (`: ApiError`, one per Case A operation) | 15 | `src/SwaggerPetstoreOpenApi3100/Errors/` |
+| Request records (one per operation that takes input; never serialized) | 17 | `src/SwaggerPetstoreOpenApi3100/Requests/` — a controller's records sit in a folder named after it (an operation with several tags is filed under the first tag it declares) |
 
 Conventions: records are immutable, `init`-only; `required` properties must be set in the object initializer; `T?` is optional. A field's wire name is its `[JsonPropertyName]` and often differs from the C# name (`AmountInCents` ↔ `amount_in_cents`) — read it off the property, don't derive it. `OneOf`/`AnyOf` unions wrap `Optional<T>` variants — build via static factory or implicit conversion, read via `TryGet…(out …)`; `AllOf` compositions are not unions — every constituent is a `required` property, so set them all, and those constituent properties carry no `[JsonPropertyName]` and have no wire name of their own, because the generated converter flattens each constituent's own fields directly into the one parent JSON object. Enums are **not** C# enums — use the static members, whose names are PascalCase even when the wire value isn't (`CollectionMethod.Invoice`, not `.invoice`); there is no public factory, so resolve a raw value with `TryGetKnownValue` and branch with the generated `Match`, whose `otherwise` arm receives any value the SDK does not declare.
 
@@ -174,29 +176,31 @@ Namespaces by content type (add `using` accordingly):
 
 | Contents | Namespace |
 | --- | --- |
-| Client & options (root) | `SwaggerPetstoreOpenApi310` |
-| Operation controllers (`src/SwaggerPetstoreOpenApi310/Api/`) | `SwaggerPetstoreOpenApi310.Api` |
-| Records (`src/SwaggerPetstoreOpenApi310/Models/`) | `SwaggerPetstoreOpenApi310.Models` |
-| Enums (`src/SwaggerPetstoreOpenApi310/Models/Enums/`) | `SwaggerPetstoreOpenApi310.Models.Enums` |
-| Error classes (`src/SwaggerPetstoreOpenApi310/Errors/`) | `SwaggerPetstoreOpenApi310.Errors` |
-| Request records (`src/SwaggerPetstoreOpenApi310/Requests/`) | `SwaggerPetstoreOpenApi310.Requests` — plus `.<Controller>` for a controller's records (an operation with several tags is filed under the first tag it declares) |
+| Client & options (root) | `SwaggerPetstoreOpenApi3100` |
+| Operation controllers (`src/SwaggerPetstoreOpenApi3100/Api/`) | `SwaggerPetstoreOpenApi3100.Api` |
+| Records (`src/SwaggerPetstoreOpenApi3100/Models/`) | `SwaggerPetstoreOpenApi3100.Models` |
+| Enums (`src/SwaggerPetstoreOpenApi3100/Models/Enums/`) | `SwaggerPetstoreOpenApi3100.Models.Enums` |
+| Error classes (`src/SwaggerPetstoreOpenApi3100/Errors/`) | `SwaggerPetstoreOpenApi3100.Errors` |
+| Request records (`src/SwaggerPetstoreOpenApi3100/Requests/`) | `SwaggerPetstoreOpenApi3100.Requests` — plus `.<Controller>` for a controller's records (an operation with several tags is filed under the first tag it declares) |
 
 ---
 
 ## Servers & auth
 
-**API key (header `Authorization`).** Set `options.PetstoreAuth = "<api_key>"`; sent as the `Authorization` request header.
+**API key (header `Authorization`).** Set `options.PetstoreAuth = "<api_key>"`, or `options.PetstoreAuthProvider` to a delegate asked on every request; sent as the `Authorization` request header.
 
-**API key (header `api_key`).** Set `options.ApiKey = "<api_key>"`; sent as the `api_key` request header.
+**API key (header `api_key`).** Set `options.ApiKey = "<api_key>"`, or `options.ApiKeyProvider` to a delegate asked on every request; sent as the `api_key` request header.
 
 Operation blocks name their credential in an **Auth** bullet; an operation whose spec declares no scheme carries no such bullet.
 
-- `AND` — every credential listed must be set for the call to be fully authenticated.
-- `OR` — the first credential you set that applies successfully is the one sent, in the order listed.
+- `AND` — every credential listed must be configured; the call fails before anything is sent, naming each one that is not.
+- `OR` — the first configured credential that applies is sent, in the order listed; a configured one that fails falls through to the next; when none is configured the call fails before anything is sent, naming all of them.
+- `OR anonymous` — the operation accepts anonymous callers: it is authenticated when a whole alternative listed before it is configured (every credential in an AND group), and sent without credentials otherwise.
+- `(scopes: …)` — the OAuth2 scopes the operation's token is requested with; a client-credentials scheme mints one token per scope set.
 
-A credential you never set is skipped rather than throwing, and the request is sent anyway — so an authentication failure can mean no credential was sent rather than a bad one. Under `OR`, if every credential you did set fails to apply, `AuthSchemeException` is thrown.
+A required credential you never configured fails the call with `AuthSchemeException` before anything is sent, so a `401` on an operation that requires a credential means the server rejected the one that was sent. A credential option left `null` is read from an environment variable when the client is constructed; the README's **Credentials from environment variables** table names them. A value set in code always wins, including the placeholder assignments in the **Getting a client** sample; delete the line for any credential you supply through an environment variable.
 
-**Environments.** `options.Environment` selects the target environment (`src/SwaggerPetstoreOpenApi310/Servers/ServerEnvironment.cs`):
+**Environments.** `options.Environment` selects the target environment (`src/SwaggerPetstoreOpenApi3100/Servers/ServerEnvironment.cs`):
 
 | Environment | Value | Hosting |
 | --- | --- | --- |

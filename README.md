@@ -1,8 +1,8 @@
-# Swagger Petstore - OpenAPI 3.1.0
+# Swagger Petstore - OpenAPI 3.10.0
 
 [![Built with APIMatic][apimatic-badge]][apimatic-url] [![License: MIT][license-badge]][license-url]
 
-The Swagger Petstore - OpenAPI 3.1.0 SDK for .NET provides access to the [Swagger Petstore - OpenAPI 3.1.0 REST APIs](https://swagger.io) from .NET applications.
+The Swagger Petstore - OpenAPI 3.10.0 SDK for .NET provides access to the [Swagger Petstore - OpenAPI 3.10.0 REST APIs](https://swagger.io) from .NET applications.
 
 > [!TIP]
 > **Looking for a specific signature, model, enum, or error type?** This SDK ships a generated,
@@ -10,7 +10,7 @@ The Swagger Petstore - OpenAPI 3.1.0 SDK for .NET provides access to the [Swagge
 > **before** grepping or scanning the source tree; it answers most contract questions directly and,
 > when a source file is genuinely needed, names the exact one to open. Details under [SDK map](#sdk-map).
 
-This is a sample Pet Store Server based on the OpenAPI 3.1.0 specification.  You can find out more about
+This is a sample Pet Store Server based on the OpenAPI 3.5.0 specification.  You can find out more about
 Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
 You can now help us improve the API whether it's by making changes to the definition itself or to the code.
 That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
@@ -32,7 +32,7 @@ dotnet add package cliV1
 To build against the SDK source instead, add it as a project reference into your solution:
 
 ```bash
-dotnet add reference <path-to-sdk>/src/SwaggerPetstoreOpenApi310/SwaggerPetstoreOpenApi310.csproj
+dotnet add reference <path-to-sdk>/src/SwaggerPetstoreOpenApi3100/SwaggerPetstoreOpenApi3100.csproj
 ```
 
 The project takes its build settings from the files around it, so reference it in place. Building from source needs the .NET 10 SDK (C# 14); the package itself targets netstandard2.0.
@@ -44,12 +44,12 @@ The assembly embeds its PDB, so stack traces carry SDK file and line numbers.
 ## Building from source
 
 ```bash
-dotnet pack src/SwaggerPetstoreOpenApi310/SwaggerPetstoreOpenApi310.csproj -c Release
+dotnet pack src/SwaggerPetstoreOpenApi3100/SwaggerPetstoreOpenApi3100.csproj -c Release
 ```
 
 Release packs come from CI, where `CI=true` makes the build deterministic; to reproduce that locally add `-p:ContinuousIntegrationBuild=true`.
 
-The generator never emits `Directory.Build.targets`, so a customer-owned one at the repo root is MSBuild's auto-imported customization seam. It imports after the props and the project body into every project under the root, so put SDK-only settings under `<PropertyGroup Condition="'$(MSBuildProjectName)' == 'SwaggerPetstoreOpenApi310'">`.
+The generator never emits `Directory.Build.targets`, so a customer-owned one at the repo root is MSBuild's auto-imported customization seam. It imports after the props and the project body into every project under the root, so put SDK-only settings under `<PropertyGroup Condition="'$(MSBuildProjectName)' == 'SwaggerPetstoreOpenApi3100'">`.
 
 It overrides every property the SDK reads when targets run (package metadata, `Version`, `AssemblyVersion`, compiler warnings, package references, which under central package management use `VersionOverride`). It cannot change values the SDK derives earlier: `TargetFramework(s)`, `AssemblyName` and output paths stay generator settings; turning off `GenerateDocumentationFile` also needs `<DocumentationFile />`; a `ContinuousIntegrationBuild` set there also needs `<DeterministicSourcePaths>true</DeterministicSourcePaths>`.
 
@@ -63,10 +63,10 @@ APIMatic's delivery tools do not yet preserve `Directory.Build.targets` across r
 
 ### Dependency Injection
 
-Register the client with `IServiceCollection` and resolve it from the container. The `HttpClient` is managed by `IHttpClientFactory`. Configure the client's behavior through [SwaggerPetstoreOpenApi310ClientOptions](https://github.com/WasifMatic/acme-dotnet-sdk/blob/main/src/SwaggerPetstoreOpenApi310/SwaggerPetstoreOpenApi310ClientOptions.cs).
+Register the client with `IServiceCollection` and resolve it from the container. The `HttpClient` is managed by `IHttpClientFactory`. Configure the client's behavior through [SwaggerPetstoreOpenApi3100ClientOptions](https://github.com/WasifMatic/acme-dotnet-sdk/blob/main/src/SwaggerPetstoreOpenApi3100/SwaggerPetstoreOpenApi3100ClientOptions.cs).
 
 ```csharp
-services.AddSwaggerPetstoreOpenApi310Client(options =>
+services.AddSwaggerPetstoreOpenApi3100Client(options =>
 {
     options.PetstoreAuth = "YOUR_API_KEY";
     options.ApiKey = "YOUR_API_KEY";
@@ -77,19 +77,63 @@ services.AddSwaggerPetstoreOpenApi310Client(options =>
 
 ### Direct Instantiation
 
-Create the client by passing an `HttpClient` you manage yourself. Configure the client's behavior through [SwaggerPetstoreOpenApi310ClientOptions](https://github.com/WasifMatic/acme-dotnet-sdk/blob/main/src/SwaggerPetstoreOpenApi310/SwaggerPetstoreOpenApi310ClientOptions.cs).
+Create the client by passing an `HttpClient` you manage yourself. Configure the client's behavior through [SwaggerPetstoreOpenApi3100ClientOptions](https://github.com/WasifMatic/acme-dotnet-sdk/blob/main/src/SwaggerPetstoreOpenApi3100/SwaggerPetstoreOpenApi3100ClientOptions.cs).
 
 ```csharp
 var httpClient = new HttpClient();
 // TODO: configure more client options here
-var options = new SwaggerPetstoreOpenApi310ClientOptions
+var options = new SwaggerPetstoreOpenApi3100ClientOptions
 {
     PetstoreAuth = "YOUR_API_KEY",
     ApiKey = "YOUR_API_KEY",
     Environment = ServerEnvironment.Production,
 };
-var client = new SwaggerPetstoreOpenApi310Client(httpClient, options);
+var client = new SwaggerPetstoreOpenApi3100Client(httpClient, options);
 ```
+
+### Credentials, tokens and 401s
+
+Every credential is an option on `SwaggerPetstoreOpenApi3100ClientOptions`. A static credential can also come from a provider that is asked on every request, so a rotated secret reaches the next call without rebuilding the client:
+
+```csharp
+var options = new SwaggerPetstoreOpenApi3100ClientOptions
+{
+    PetstoreAuthProvider = async ct => await vault.ReadAsync("api-key", ct),
+};
+```
+
+When a server answers `401 Unauthorized`:
+
+- A call with a static credential (bearer token, API key, basic auth) is not retried; a provider, if you set one, is asked again on the next call, not on this one. A throwing operation raises `ApiException` with `StatusCode` 401.
+
+### Required and optional auth
+
+An operation sends only the credentials its API declares. If a required credential is not configured, the call fails before anything is sent with an `AuthSchemeException` that names the scheme (`… requires the PetstoreAuth scheme, which is not configured.`). An operation that accepts any of several sends the first configured credential that applies, in the order the API lists them; a configured one that fails falls through to the next, and all of them are named when none is configured. A credential that is set but blank is treated as configured and sent as-is: the SDK checks presence, never content.
+
+### Credentials from environment variables
+
+Any credential option left `null` is read from an environment variable when the client is constructed. The variable name is the SDK name and the option's name, each in upper snake case, plus the member name for multi-member credentials:
+
+| Option | Environment variables |
+| --- | --- |
+| `PetstoreAuth` | `SWAGGER_PETSTORE_OPEN_API3100_PETSTORE_AUTH` |
+| `ApiKey` | `SWAGGER_PETSTORE_OPEN_API3100_API_KEY` |
+| logging | `SWAGGER_PETSTORE_OPEN_API3100_LOG` = `info`, `debug` or `trace` (read only when no `ILoggerFactory` is set; `AddSwaggerPetstoreOpenApi3100Client` always supplies the container's) |
+
+Rules:
+
+- A value set in code always wins over the environment, including the placeholder assignments in the Quick Start samples; delete the line for any credential you supply through an environment variable.
+- A variable that is unset, empty or whitespace counts as not configured.
+- Variables are read once, when the client is constructed. Changing them afterwards has no effect on an existing client.
+
+Hosted applications that already use the .NET options pattern can bind the whole options object from `IConfiguration` instead, which picks up environment variables through the configuration provider (`SwaggerPetstoreOpenApi3100__PetstoreAuth`, and so on):
+
+```csharp
+services.AddSwaggerPetstoreOpenApi3100Client(options => configuration.GetSection("SwaggerPetstoreOpenApi3100").Bind(
+    options));
+```
+
+Both paths coexist: a slot the bound configuration leaves `null` still falls back to its environment variable.
 
 ---
 
@@ -139,7 +183,7 @@ The map and the [API Reference](https://github.com/WasifMatic/acme-dotnet-sdk/bl
 
 | Use | For |
 | --- | --- |
-| **[`sdk-map.md`](https://github.com/WasifMatic/acme-dotnet-sdk/blob/main/sdk-map.md) + [`map/`](https://github.com/WasifMatic/acme-dotnet-sdk/blob/main/map/)** | Traversing the SDK and working out its surface — locating the operation you need (this SDK exposes **19 operations**), its exact signature and request record, the shape and JSON wire names of the models it takes and returns, which error type it throws and how to read it, and the source file behind any of it. This is the index to consume the SDK from, and the one to reach for first. |
+| **[`sdk-map.md`](https://github.com/WasifMatic/acme-dotnet-sdk/blob/main/sdk-map.md) + [`map/`](https://github.com/WasifMatic/acme-dotnet-sdk/blob/main/map/)** | Traversing the SDK and working out its surface — locating the operation you need (this SDK exposes **22 operations**), its exact signature and request record, the shape and JSON wire names of the models it takes and returns, which error type it throws and how to read it, and the source file behind any of it. This is the index to consume the SDK from, and the one to reach for first. |
 | **[`api-reference.md`](https://github.com/WasifMatic/acme-dotnet-sdk/blob/main/api-reference.md)** | Usage guidance for a single operation once you know which one you want — a runnable code sample, a link to its request record, and the error responses it can return. |
 
 ## Error Handling
@@ -147,9 +191,9 @@ The map and the [API Reference](https://github.com/WasifMatic/acme-dotnet-sdk/bl
 Operations throw when the server answers with an error status. `TError` is the operation's error type from the spec — `RawError` (the status code plus the raw body) when the spec declares none.
 
 ```csharp
-using SwaggerPetstoreOpenApi310.Core.Exceptions;   // the exception family
-using SwaggerPetstoreOpenApi310.Errors;            // generated error types such as AddPetError
-using SwaggerPetstoreOpenApi310.Requests.PetApi;   // request records such as AddPetRequest
+using SwaggerPetstoreOpenApi3100.Core.Exceptions;   // the exception family
+using SwaggerPetstoreOpenApi3100.Errors;            // generated error types such as AddPetError
+using SwaggerPetstoreOpenApi3100.Requests.PetApi;   // request records such as AddPetRequest
 
 try
 {
@@ -179,7 +223,7 @@ Everything the SDK raises for a call derives from `SdkException`, which carries 
 | `ResponseDeserializationException` | A response body did not match the type the spec declares | `TargetType`, plus the `ApiException` members |
 | `SdkConnectionException` | The request could not be sent, or the response body could not be read |  |
 | `SdkTimeoutException` | An attempt, the transport, or a Server-Sent Events stream went silent (derives from `SdkConnectionException`) | `Timeout` |
-| `AuthSchemeException` | A credential could not be applied — for example the OAuth2 token endpoint refused it | `SchemeFailures` |
+| `AuthSchemeException` | A required credential is not configured, a provider returned nothing, or a credential could not be applied — for example the OAuth2 token endpoint refused it | `SchemeFailures` |
 
 Catch from specific to general: `ApiException` means the server answered, `SdkConnectionException` means it did not, and `SdkException` is everything the SDK raises. Your own cancellation surfaces as the usual `OperationCanceledException`, never wrapped.
 
@@ -188,7 +232,7 @@ Catch from specific to general: `ApiException` means the server answered, `SdkCo
 ## Best Practices
 
 > [!TIP]
-> Use a **single `SwaggerPetstoreOpenApi310Client` instance** for the lifetime of your application and
+> Use a **single `SwaggerPetstoreOpenApi3100Client` instance** for the lifetime of your application and
 > reuse it across all requests. Creating a new instance per request might exhaust the
 > connection pool.
 
@@ -201,9 +245,9 @@ Catch from specific to general: `ApiException` means the server answered, `SdkCo
 > surfaces as the same `SdkTimeoutException` but cannot be retried.
 
 > [!TIP]
-> The SDK reads time only through `SwaggerPetstoreOpenApi310ClientOptions.TimeProvider` (default
+> The SDK reads time only through `SwaggerPetstoreOpenApi3100ClientOptions.TimeProvider` (default
 > `TimeProvider.System`): retry backoff, `Retry-After`, the SSE idle timeout, OAuth2 token
-> expiry and the logged request durations all follow it. Under `AddSwaggerPetstoreOpenApi310Client` a
+> expiry and the logged request durations all follow it. Under `AddSwaggerPetstoreOpenApi3100Client` a
 > `TimeProvider` registered in the container is picked up automatically, and setting the
 > option explicitly wins. To fake time in your own tests use a provider that implements
 > timers, such as `FakeTimeProvider` from `Microsoft.Extensions.TimeProvider.Testing`, so

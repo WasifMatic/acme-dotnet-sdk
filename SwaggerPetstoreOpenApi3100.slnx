@@ -1,0 +1,5 @@
+<Solution>
+    <Folder Name="/src/">
+        <Project Path="src/SwaggerPetstoreOpenApi3100/SwaggerPetstoreOpenApi3100.csproj" />
+    </Folder>
+</Solution>

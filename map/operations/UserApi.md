@@ -2,7 +2,7 @@
 
 # UserApi — operations
 
-Accessor: `client.UserApi` · Source: `src/SwaggerPetstoreOpenApi310/Api/UserApi.cs` · 7 operations
+Accessor: `client.UserApi` · Source: `src/SwaggerPetstoreOpenApi3100/Api/UserApi.cs` · 7 operations
 
 **Type sources**: the file declaring each type an operation names (`RawError` excluded — see sdk-map.md).
 
@@ -14,8 +14,8 @@ Accessor: `client.UserApi` · Source: `src/SwaggerPetstoreOpenApi310/Api/UserApi
 
 | Type | Source |
 | --- | --- |
-| `CreateUserRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/CreateUserRequest.cs` |
-| `User` | `src/SwaggerPetstoreOpenApi310/Models/User.cs` |
+| `CreateUserRequest` | `src/SwaggerPetstoreOpenApi3100/Requests/UserApi/CreateUserRequest.cs` |
+| `User` | `src/SwaggerPetstoreOpenApi3100/Models/User.cs` |
 
 ### CreateUsersWithListInput
 
@@ -25,8 +25,8 @@ Accessor: `client.UserApi` · Source: `src/SwaggerPetstoreOpenApi310/Api/UserApi
 
 | Type | Source |
 | --- | --- |
-| `CreateUsersWithListInputRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/CreateUsersWithListInputRequest.cs` |
-| `User` | `src/SwaggerPetstoreOpenApi310/Models/User.cs` |
+| `CreateUsersWithListInputRequest` | `src/SwaggerPetstoreOpenApi3100/Requests/UserApi/CreateUsersWithListInputRequest.cs` |
+| `User` | `src/SwaggerPetstoreOpenApi3100/Models/User.cs` |
 
 ### DeleteUser
 
@@ -38,8 +38,8 @@ Accessor: `client.UserApi` · Source: `src/SwaggerPetstoreOpenApi310/Api/UserApi
 
 | Type | Source |
 | --- | --- |
-| `DeleteUserRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/DeleteUserRequest.cs` |
-| `DeleteUserError` | `src/SwaggerPetstoreOpenApi310/Errors/DeleteUserError.cs` |
+| `DeleteUserRequest` | `src/SwaggerPetstoreOpenApi3100/Requests/UserApi/DeleteUserRequest.cs` |
+| `DeleteUserError` | `src/SwaggerPetstoreOpenApi3100/Errors/DeleteUserError.cs` |
 
 ### GetUserByName
 
@@ -51,9 +51,9 @@ Accessor: `client.UserApi` · Source: `src/SwaggerPetstoreOpenApi310/Api/UserApi
 
 | Type | Source |
 | --- | --- |
-| `GetUserByNameRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/GetUserByNameRequest.cs` |
-| `User` | `src/SwaggerPetstoreOpenApi310/Models/User.cs` |
-| `GetUserByNameError` | `src/SwaggerPetstoreOpenApi310/Errors/GetUserByNameError.cs` |
+| `GetUserByNameRequest` | `src/SwaggerPetstoreOpenApi3100/Requests/UserApi/GetUserByNameRequest.cs` |
+| `User` | `src/SwaggerPetstoreOpenApi3100/Models/User.cs` |
+| `GetUserByNameError` | `src/SwaggerPetstoreOpenApi3100/Errors/GetUserByNameError.cs` |
 
 ### LoginUser
 
@@ -65,8 +65,8 @@ Accessor: `client.UserApi` · Source: `src/SwaggerPetstoreOpenApi310/Api/UserApi
 
 | Type | Source |
 | --- | --- |
-| `LoginUserRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/LoginUserRequest.cs` |
-| `LoginUserError` | `src/SwaggerPetstoreOpenApi310/Errors/LoginUserError.cs` |
+| `LoginUserRequest` | `src/SwaggerPetstoreOpenApi3100/Requests/UserApi/LoginUserRequest.cs` |
+| `LoginUserError` | `src/SwaggerPetstoreOpenApi3100/Errors/LoginUserError.cs` |
 
 ### LogoutUser
 
@@ -84,6 +84,6 @@ Accessor: `client.UserApi` · Source: `src/SwaggerPetstoreOpenApi310/Api/UserApi
 
 | Type | Source |
 | --- | --- |
-| `UpdateUserRequest` | `src/SwaggerPetstoreOpenApi310/Requests/UserApi/UpdateUserRequest.cs` |
-| `UpdateUserError` | `src/SwaggerPetstoreOpenApi310/Errors/UpdateUserError.cs` |
+| `UpdateUserRequest` | `src/SwaggerPetstoreOpenApi3100/Requests/UserApi/UpdateUserRequest.cs` |
+| `UpdateUserError` | `src/SwaggerPetstoreOpenApi3100/Errors/UpdateUserError.cs` |
 

@@ -1,0 +1,10 @@
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\bin\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.deps.json
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\bin\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.dll
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\bin\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.xml
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\obj\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.csproj.AssemblyReference.cache
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\obj\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.GeneratedMSBuildEditorConfig.editorconfig
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\obj\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.AssemblyInfoInputs.cache
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\obj\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.AssemblyInfo.cs
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\obj\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.csproj.CoreCompileInputs.cache
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\obj\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.dll
+D:\custom-code-injection-v4\sdk\csharp\src\SwaggerPetstoreOpenApi380\obj\Debug\netstandard2.0\SwaggerPetstoreOpenApi380.xml
